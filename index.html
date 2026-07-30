@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TO-Do List App - Easy Tutorials</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container">
+
+ <!-- Das Eingabefeld oben -->
+ <div class="input-section">
+            <div class="input-group">
+                <input type="text" id="todo-input" placeholder="Add a to-do item...">
+                <button id="add-btn">Add</button>
+            </div>
+            <!-- Die Fehlermeldung klebt unter dem Eingabefeld -->
+            <p id="error-msg" class="error-text hidden">📍 Please enter content!</p>
+        </div>
+
+        <!-- Die Reihe für Box + Buttons startet hier -->
+        <div class="main-row">
+
+            <!-- Unterer Bereich: der grosse Kasten (Todo-App) -->
+            <div class="todo-app">
+                <div class="title-header"
+                    style="display: flex; align-items: stretch; border-bottom: 2px solid #333; background-color: #f8fafc;">
+                    <!-- Der grüne Button direkt links bündig -->
+                    <!-- KORREKTUR: btn-hidden als Klasse hinzugefügt, style-display entfernt -->
+                    <button id="mark-all-done-btn" class="header-btn btn-green btn-hidden"
+                        style="width: auto; padding: 12px 20px; border: none; border-right: 2px solid #333; border-radius: 0; font-weight: bold; cursor: pointer; background-color: #a7ddd3; color: #1f2937;">
+                        Mark All Done
+                    </button>
+
+
+                    <!-- Der Titel-Text daneben -->
+                    <div class="title"
+                        style="flex: 1; border: none; padding: 12px 20px; display: flex; align-items: center;">
+                        Act Now, Simplify Life. ☕
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <!-- Die Infobox mit den Gebrauch-Tipps -->
+                <div id="usage-tips" class="tips-container">
+                    <h3>Add Your First To-Do Item! 📝</h3>
+                    <p class="tips-sub">Usage Tips 💡 :</p>
+                    <ul>
+                        <li><span class="purple-check">✔</span> Press Enter to submit actions.</li>
+                        <li><span class="purple-check">✔</span> Drag to reorder your to-dos (PC only)</li>
+                        <li><span class="purple-check">✔</span> Double-click to edit slogan and tasks.</li>
+                        <li><span class="purple-check">✔</span> Access quick actions in the right sidebar.</li>
+                        <li><span class="emoji-icon">🔒</span> Your data is stored locally in your browser.</li>
+                        <li><span class="emoji-icon">📝</span> Supports data download and import.</li>
+                    </ul>
+                </div>
+
+                    <!-- KORREKTUR: Hier ist deine fehlende To-Do-Liste! -->
+                    <ul id="todo-list" class="todo-list"></ul>
+                </div>
+
+                <hr class="todo-divider">
+                <div class="todo-footer"></div>
+            </div><!-- KORREKTUR: Die kleine Sidebar ist komplett gelöscht! Nur noch die grosse ist da -->
+            <aside class="todo-sidebar" id="large-sidebar">
+                <!-- Der Kopf-Button, der sich gleich magisch verwandelt -->
+                <button class="side-btn btn-green" id="open-btn" type="button">OPEN ✨</button>
+            
+                <!-- Die ganz normalen Knöpfe darunter -->
+                <button class="side-btn btn-white" id="all-btn" type="button">All</button>
+                <button class="side-btn btn-white btn-hidden" id="in-progress-btn" type="button">In Progress</button>
+                <button class="side-btn btn-white btn-hidden" id="completed-btn" type="button">Completed</button>
+                <button class="side-btn btn-white btn-hidden" id="trash-btn" type="button">Trash</button>
+                <button class="side-btn btn-white btn-hidden" id="finish-all-btn" type="button">Finish all</button>
+                <button class="side-btn btn-white btn-hidden" id="clear-completed-btn" type="button">Clear Completed</button>
+                <button class="side-btn btn-white btn-hidden" id="clear-all-btn" type="button">Clear All</button>
+                <button class="side-btn btn-white btn-hidden" id="export-btn" type="button">Export data</button>
+            
+                <label for="file-input">
+                    <span class="side-btn btn-white" id="import-btn">Import(txt/json)</span>
+                </label>
+                <input type="file" id="file-input" accept=".txt,.json" style="display: none;">
+            </aside>
+
+
+
+        </div> <!-- Ende .main-row -->
+    </div> <!-- Ende .container -->
+<!-- Das Bestätigungsfenster (Modal) -->
+<div id="confirm-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+        <h2>Please Confirm</h2>
+        <p>Confirm to mark all as completed?</p>
+        <div class="modal-buttons">
+            <button id="modal-cancel-btn" class="modal-btn btn-cancel">Cancel</button>
+            <button id="modal-ok-btn" class="modal-btn btn-ok">OK</button>
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

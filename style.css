@@ -1,0 +1,362 @@
+/* ==========================================================================
+   1. STRUKTUR & BASIS (EXAKT NACH REFERENZ)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle, rgba(100, 100, 100, 0.15) 3px, transparent 3px), #eaf8ff;
+    background-size: 35px 35px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    /* Begrenzt das gesamte Paket exakt wie das Original */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+/* ==========================================================================
+   2. EINGABEZEILE (OBEN)
+   ========================================================================== */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.input-group {
+    display: flex;
+    border: 3px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 4px 4px 0px #333;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    flex: 1;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    outline: none;
+    background: #fff;
+}
+
+.input-group button {
+    border: none;
+    border-left: 3px solid #333;
+    background: #ffc8d0;
+    /* Das typische Rosa */
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.error-text {
+    color: #ef4444;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   3. HAUPTREIHE (FLEX-LAYOUT DER REFERENZSEITE)
+   ========================================================================== */
+.main-row {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    /* Hält die Oberkanten perfekt auf einer Linie */
+    justify-content: flex-start;
+    gap: 20px;
+    /* Der exakte, saubere Abstand zwischen Kasten und Menü */
+    position: relative;
+}
+
+/* ==========================================================================
+   4. LINKER KASTEN (TODO-APP - DYNAMISCH)
+   ========================================================================== */
+.todo-app {
+    flex: 1;
+    /* Nimmt sich automatisch den restlichen Platz links, genau wie bei todo.uiineed.com */
+    min-width: 0;
+    /* Verhindert Layout-Ausbrüche */
+    height: 550px;
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 15px;
+    box-shadow: 4px 4px 0px #333;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-header {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 3px solid #333;
+    background-color: #f8fafc;
+}
+
+.header-btn {
+    width: auto;
+    padding: 12px 20px;
+    border: none;
+    border-right: 3px solid #333;
+    border-radius: 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-green {
+    background-color: #a7ddd3;
+    color: #1f2937;
+}
+
+.title {
+    flex: 1;
+    border: none;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    cursor: pointer;
+    transition: background-color 0.23s ease;
+}
+
+.title:hover {
+    background-color: #FDF6E2;
+}
+
+.box-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* ==========================================================================
+   5. RECHTER KASTEN (SIDEBAR-MENÜ - FESTE BREITE)
+   ========================================================================== */
+.todo-sidebar {
+    width: 200px;
+    /* Die exakte Originalbreite der Referenzseite */
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 15px;
+    box-shadow: 4px 4px 0px #333;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    /* Blockiert das Zusammenquetschen */
+}
+
+/* Die eckigen Buttons aus der Vorlage */
+.todo-sidebar .side-btn {
+    width: 100% !important;
+    display: block !important;
+    padding: 12px 10px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    border: 2px solid #333 !important;
+    border-radius: 8px !important;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 2px 2px 0px #333;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.todo-sidebar .side-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #333;
+}
+
+/* Farben der Sidebar-Buttons */
+.todo-sidebar #open-btn {
+    background-color: #a7ddd3 !important;
+    /* Mintgrün für OPEN */
+}
+
+.todo-sidebar .side-btn.active {
+    background: #ffc8d0 !important;
+    /* Rosa für den aktiven Zustand (z.B. All) */
+}
+
+.todo-sidebar label {
+    width: 100%;
+    display: block;
+}
+
+/* ==========================================================================
+   6. INNERES LISTEN-STYLING & TIPPS
+   ========================================================================== */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.todo-list li {
+    background: #FFFDF4;
+    border: 3px solid #1f2937;
+    border-radius: 14px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    box-shadow: 4px 4px 0px #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.check-circle,
+.delete-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #1f2937 !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+    background-color: #ffffff !important;
+    flex-shrink: 0;
+}
+
+.check-circle {
+    width: 25px !important;
+    height: 25px !important;
+    margin-right: 15px;
+}
+
+.delete-btn {
+    width: 26px !important;
+    height: 26px !important;
+}
+
+.todo-list li.checked {
+    background: #D2F4EE;
+    box-shadow: 2px 2px 0px #1f2937;
+    transform: translate(2px, 2px);
+}
+
+.todo-list li.checked .todo-content {
+    text-decoration: line-through;
+    color: #4b5563;
+}
+
+.todo-list li.checked .check-circle {
+    background-color: #a7ddd3 !important;
+}
+
+.tips-container h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #1f2937;
+}
+
+.tips-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tips-container li {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #4b5563;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   7. INTERFACES (FOOTER & MODALS)
+   ========================================================================== */
+.todo-footer {
+    padding: 15px 30px;
+    font-weight: bold;
+    color: #4b5563;
+    border-top: 3px solid #333;
+    background: #fff;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-box {
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 4px 4px 0px #333;
+    text-align: center;
+    max-width: 350px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 8px 20px;
+    font-weight: bold;
+    border: 2px solid #333;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-ok {
+    background: #a7ddd3;
+}
+
+.btn-cancel {
+    background: #ffc8d0;
+}
+
+.hidden,
+.btn-hidden {
+    display: none !important;
+}
