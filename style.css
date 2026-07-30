@@ -243,7 +243,8 @@ body {
 }
 
 .check-circle,
-.delete-btn {
+.delete-btn,
+.edit-btn {
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -263,6 +264,27 @@ body {
 .delete-btn {
     width: 26px !important;
     height: 26px !important;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.edit-btn {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+}
+
+.todo-edit-input {
+    flex: 1;
+    min-width: 0;
+    border: 2px solid #1f2937;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font: inherit;
 }
 
 .todo-list li.checked {

@@ -30,6 +30,7 @@ const svgCross = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" str
 
 // Das exakte, freihändig geschwungene SVG-Häkchen
 const svgCheck = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px; display:block;"><path d="M20 6L9 17l-5-5"/></svg>`;
+const svgEdit = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px; display:block;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`;
 
 // Speichert den Zustand aller Aufgaben im lokalen Speicher des Browsers
 function saveToLocalStorage() {
@@ -67,7 +68,10 @@ function loadFromLocalStorage() {
         li.innerHTML = `
             <span class="check-circle">${item.checked ? svgCheck : ''}</span>
             <div class="todo-content">${item.text}</div>
-            <span class="delete-btn">${svgCross}</span>
+            <div class="task-actions">
+                <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
+                <span class="delete-btn">${svgCross}</span>
+            </div>
         `;
         todolist.appendChild(li);
     });
@@ -166,7 +170,10 @@ function checkInput() {
         li.innerHTML = `
             <span class="check-circle"></span>
             <div class="todo-content">${text}</div>
-            <span class="delete-btn">${svgCross}</span>
+            <div class="task-actions">
+                <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
+                <span class="delete-btn">${svgCross}</span>
+            </div>
         `;
         
         todolist.appendChild(li);
@@ -189,6 +196,40 @@ if (todolist) {
         const target = event.target;
         const li = target.closest('li');
         if (!li) return;
+
+        // Aufgabe bearbeiten
+        if (target.classList.contains('edit-btn') || target.closest('.edit-btn')) {
+            if (currentView !== 'trash') {
+                const textDiv = li.querySelector('.todo-content');
+                if (!textDiv) return;
+
+                const originalText = textDiv.innerText;
+                const editInput = document.createElement('input');
+                editInput.type = 'text';
+                editInput.className = 'todo-edit-input';
+                editInput.value = originalText;
+                textDiv.replaceWith(editInput);
+                editInput.focus();
+                editInput.select();
+
+                let isEditing = true;
+                const finishEditing = (saveChanges) => {
+                    if (!isEditing) return;
+                    isEditing = false;
+                    const updatedText = editInput.value.trim();
+                    textDiv.textContent = saveChanges && updatedText ? updatedText : originalText;
+                    editInput.replaceWith(textDiv);
+                    if (saveChanges && updatedText) saveToLocalStorage();
+                };
+
+                editInput.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') finishEditing(true);
+                    if (event.key === 'Escape') finishEditing(false);
+                });
+                editInput.addEventListener('blur', () => finishEditing(true));
+            }
+            return;
+        }
 
         // Aufgabe abhaken
         if (target.classList.contains('check-circle') || target.closest('.check-circle') || target.classList.contains('todo-content')) {
@@ -380,7 +421,10 @@ if (fileInput) {
                         li.innerHTML = `
                             <span class="check-circle">${item.checked ? svgCheck : ''}</span> 
                             <div class="todo-content">${item.text}</div> 
-                            <span class="delete-btn">${svgCross}</span>
+                            <div class="task-actions">
+                                <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
+                                <span class="delete-btn">${svgCross}</span>
+                            </div>
                         `;
                         todolist.appendChild(li);
                     });
