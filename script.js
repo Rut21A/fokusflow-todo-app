@@ -212,6 +212,15 @@ if (todolist) {
                 editInput.focus();
                 editInput.select();
 
+                const taskActions = li.querySelector('.task-actions');
+                const editButton = target.closest('.edit-btn');
+                const cancelButton = document.createElement('button');
+                cancelButton.type = 'button';
+                cancelButton.className = 'cancel-edit-btn';
+                cancelButton.textContent = 'Cancel';
+                if (taskActions) taskActions.prepend(cancelButton);
+                if (editButton) editButton.classList.add('hidden');
+
                 let isEditing = true;
                 const finishEditing = (saveChanges) => {
                     if (!isEditing) return;
@@ -219,6 +228,8 @@ if (todolist) {
                     const updatedText = editInput.value.trim();
                     textDiv.textContent = saveChanges && updatedText ? updatedText : originalText;
                     editInput.replaceWith(textDiv);
+                    cancelButton.remove();
+                    if (editButton) editButton.classList.remove('hidden');
                     if (saveChanges && updatedText) saveToLocalStorage();
                 };
 
@@ -227,6 +238,11 @@ if (todolist) {
                     if (event.key === 'Escape') finishEditing(false);
                 });
                 editInput.addEventListener('blur', () => finishEditing(true));
+                cancelButton.addEventListener('mousedown', (event) => {
+                    event.preventDefault();
+                    finishEditing(false);
+                });
+                cancelButton.addEventListener('click', () => finishEditing(false));
             }
             return;
         }

@@ -278,6 +278,15 @@ body {
     padding: 0;
 }
 
+.cancel-edit-btn {
+    border: 2px solid #1f2937;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 4px 8px;
+    font: inherit;
+    cursor: pointer;
+}
+
 .todo-edit-input {
     flex: 1;
     min-width: 0;
