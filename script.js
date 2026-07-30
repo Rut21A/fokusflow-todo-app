@@ -397,4 +397,5 @@ if (fileInput) {
 
 // Initialer Start beim Laden der App
 loadFromLocalStorage();
+switchView(currentView);
 updateMarkAllDoneVisibility();
