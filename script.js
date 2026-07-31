@@ -25,7 +25,11 @@ const sideButtons = document.querySelectorAll('.todo-sidebar .side-btn');
 const validViews = ['all', 'in-progress', 'completed', 'trash'];
 let currentView = localStorage.getItem('todoView') || 'all';
 if (!validViews.includes(currentView)) currentView = 'all';
-let isQuickMode = false;
+let isQuickMode = window.matchMedia('(max-width: 620px)').matches;
+if (isQuickMode && openBtn && largeSidebar) {
+    largeSidebar.classList.add('quick-mode');
+    openBtn.textContent = 'QUICKS';
+}
 
 // Variable, um zu speichern, welche Aktion gerade im Bestätigungsfenster offen ist
 let activeDeleteAction = '';
@@ -226,6 +230,11 @@ if (openBtn && largeSidebar) {
         isQuickMode = !isQuickMode;
         largeSidebar.classList.toggle('quick-mode', isQuickMode);
         openBtn.textContent = isQuickMode ? 'QUICKS' : 'OPEN ✨';
+
+        // Beim Öffnen alle verfügbaren Schnellaktionen zeigen.
+        if (!isQuickMode) {
+            sideButtons.forEach(button => button.classList.remove('btn-hidden'));
+        }
     });
 }
 if (todoInput) {
