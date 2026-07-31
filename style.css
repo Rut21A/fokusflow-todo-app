@@ -246,6 +246,42 @@ body {
     display: none !important;
 }
 
+.todo-sidebar:not(.has-tasks) .task-only {
+    display: none !important;
+}
+
+.todo-sidebar.has-tasks {
+    width: 170px;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+}
+
+.todo-sidebar.has-tasks .side-btn {
+    border: 0 !important;
+    border-bottom: 1px solid #333 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 10px !important;
+}
+
+.todo-sidebar.has-tasks #open-btn {
+    background: #a7ddd3 !important;
+    border-bottom: 2px solid #333 !important;
+}
+
+.todo-sidebar.has-tasks #all-btn {
+    background: #ffc8d0 !important;
+}
+
+.todo-sidebar.has-tasks label {
+    display: block;
+}
+
+.todo-sidebar.has-tasks label .side-btn {
+    border-bottom: 0 !important;
+}
+
 .todo-sidebar.quick-mode {
     width: 62px;
     padding: 0;

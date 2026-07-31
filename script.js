@@ -146,6 +146,7 @@ function updateMarkAllDoneVisibility() {
     // 4. Reine Aktionsknöpfe nur einblenden, wenn To-Dos in der Liste existieren
     const actionButtons = ['finish-all-btn', 'clear-completed-btn', 'clear-all-btn'];
     const hasItems = allTodos.length > 0;
+    if (largeSidebar) largeSidebar.classList.toggle('has-tasks', hasItems);
     actionButtons.forEach(id => {
         const btn = document.getElementById(id);
         if (btn) {
