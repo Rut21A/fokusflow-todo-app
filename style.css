@@ -612,7 +612,7 @@ body {
     .input-group button {
         width: auto;
         flex: 1 1 50%;
-        min-height: 48px;
+        min-height: 52px;
         border-left: 3px solid #333;
         border-top: 3px solid #333;
     }
@@ -639,7 +639,7 @@ body {
 
     .box-body {
         padding: 18px;
-        overflow: visible;
+        overflow-y: auto;
     }
 
     .todo-list li {
@@ -647,11 +647,26 @@ body {
     }
 
     .check-circle {
+        width: 38px !important;
+        height: 38px !important;
         margin-right: 10px;
     }
 
     .task-actions {
-        gap: 6px;
+        gap: 8px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .todo-sidebar:not(.quick-mode) .side-btn {
+        min-height: 44px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
     }
 
     .todo-footer {
