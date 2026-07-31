@@ -75,7 +75,7 @@ function loadFromLocalStorage() {
             <span class="check-circle">${item.checked ? svgCheck : ''}</span>
             <div class="task-main">
                 <div class="todo-content">${item.text}</div>
-                ${item.dueDate ? `<span class="due-date">Due: ${item.dueDate}</span>` : ''}
+                ${item.dueDate ? `<span class="due-date">📅 Due date: ${item.dueDate}</span>` : ''}
             </div>
             <div class="task-actions">
                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
@@ -202,7 +202,7 @@ function checkInput() {
             <span class="check-circle"></span>
             <div class="task-main">
                 <div class="todo-content">${text}</div>
-                ${dueDate ? `<span class="due-date">Due: ${dueDate}</span>` : ''}
+                ${dueDate ? `<span class="due-date">📅 Due date: ${dueDate}</span>` : ''}
             </div>
             <div class="task-actions">
                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
@@ -475,7 +475,7 @@ if (fileInput) {
                             <span class="check-circle">${item.checked ? svgCheck : ''}</span> 
                             <div class="task-main">
                                 <div class="todo-content">${item.text}</div>
-                                ${item.dueDate ? `<span class="due-date">Due: ${item.dueDate}</span>` : ''}
+                                ${item.dueDate ? `<span class="due-date">📅 Due date: ${item.dueDate}</span>` : ''}
                             </div>
                             <div class="task-actions">
                                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
