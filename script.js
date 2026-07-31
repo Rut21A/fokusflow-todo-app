@@ -25,6 +25,7 @@ const sideButtons = document.querySelectorAll('.todo-sidebar .side-btn');
 const validViews = ['all', 'in-progress', 'completed', 'trash'];
 let currentView = localStorage.getItem('todoView') || 'all';
 if (!validViews.includes(currentView)) currentView = 'all';
+let isQuickMode = false;
 
 // Variable, um zu speichern, welche Aktion gerade im Bestätigungsfenster offen ist
 let activeDeleteAction = '';
@@ -219,6 +220,13 @@ function checkInput() {
 }
 
 if (addBtn) addBtn.addEventListener('click', checkInput);
+if (openBtn && largeSidebar) {
+    openBtn.addEventListener('click', function() {
+        isQuickMode = !isQuickMode;
+        largeSidebar.classList.toggle('quick-mode', isQuickMode);
+        openBtn.textContent = isQuickMode ? 'QUICKS' : 'OPEN ✨';
+    });
+}
 if (todoInput) {
     todoInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') { checkInput(); }

@@ -242,6 +242,57 @@ body {
     display: block;
 }
 
+.todo-sidebar:not(.quick-mode) .quick-only {
+    display: none !important;
+}
+
+.todo-sidebar.quick-mode {
+    width: 62px;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+}
+
+.todo-sidebar.quick-mode .side-btn:not(#open-btn),
+.todo-sidebar.quick-mode label {
+    display: none !important;
+}
+
+.todo-sidebar.quick-mode #open-btn {
+    display: block !important;
+    width: 100% !important;
+    height: 128px;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    font-size: 0 !important;
+    position: relative;
+}
+
+.todo-sidebar.quick-mode #open-btn::before {
+    content: "☰";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    background: #ffc8d0;
+    border-bottom: 2px solid #333;
+    font-size: 20px;
+}
+
+.todo-sidebar.quick-mode #open-btn::after {
+    content: "Quicks";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    font-size: 16px;
+    font-weight: 500;
+    writing-mode: vertical-rl;
+}
+
 .todo-sidebar > .side-btn:nth-child(odd):not(#open-btn):hover {
     background: #a7ddd3 !important;
 }
