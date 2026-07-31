@@ -271,6 +271,7 @@ body {
     border-left: 3px solid #333;
     padding: 12px;
     background: #a7ddd3;
+    font-weight: bold;
 }
 
 .task-actions {
