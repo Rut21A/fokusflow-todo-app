@@ -681,24 +681,26 @@ body {
     }
 
     .input-group {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
     }
 
     .input-group input[type="text"] {
-        flex: 1 1 auto;
-        min-width: 0;
+        flex: 0 0 100%;
     }
 
     .input-group input[type="date"] {
-        display: none;
+        display: block;
+        flex: 1 1 50%;
+        border-left: none;
+        border-top: 3px solid #333;
     }
 
     .input-group button {
-        width: 104px;
-        flex: 0 0 104px;
-        min-height: 60px;
+        width: auto;
+        flex: 1 1 50%;
+        min-height: 48px;
         border-left: 3px solid #333;
-        border-top: none;
+        border-top: 3px solid #333;
     }
 
     .title-header .header-btn {
