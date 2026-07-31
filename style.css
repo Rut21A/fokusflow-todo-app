@@ -593,19 +593,6 @@ body {
         padding-top: 4px;
     }
 
-    .mobile-links {
-        position: absolute;
-        right: 12px;
-        top: 4px;
-        color: #444;
-        font-size: 16px;
-    }
-
-    .github-dot {
-        color: #555;
-        font-size: 17px;
-    }
-
     .mobile-logo {
         position: absolute;
         top: 39px;
