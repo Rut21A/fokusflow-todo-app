@@ -633,7 +633,7 @@ body {
     }
 
     .todo-app {
-        height: min(590px, calc(100vh - 254px));
+        height: clamp(360px, calc(100vh - 365px), 590px);
         min-height: 0;
     }
 
