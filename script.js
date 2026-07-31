@@ -3,6 +3,7 @@ const todoInput = document.getElementById('todo-input');
 const errorMsg = document.getElementById('error-msg');
 const usageTips = document.getElementById('usage-tips'); 
 const todolist = document.getElementById('todo-list'); 
+const emptyState = document.getElementById('empty-state');
 
 const largeSidebar = document.getElementById('large-sidebar');
 const smallSidebar = document.getElementById('small-sidebar');
@@ -96,15 +97,33 @@ function updateMarkAllDoneVisibility() {
     // 2. Footer-Text mit verbleibenden Elementen berechnen
     if (todoFooter) {
         if (allTodos.length > 0) {
-            const count = remainingTodos.length;
-            const unit = count === 1 ? 'item' : 'items';
-            todoFooter.textContent = count + " " + unit + " remaining";
+            const visibleCount = visibleTodos.length;
+            const filterNames = {
+                all: 'all tasks',
+                'in-progress': 'open tasks',
+                completed: 'completed tasks',
+                trash: 'trashed tasks'
+            };
+            const unit = visibleCount === 1 ? 'task' : 'tasks';
+            todoFooter.textContent = `${visibleCount} ${filterNames[currentView] || ''} shown (${remainingTodos.length} ${unit} open)`;
             todoFooter.classList.remove('hidden');
             todoFooter.style.setProperty('display', 'flex', 'important'); 
         } else {
             todoFooter.textContent = ""; 
             todoFooter.style.setProperty('display', 'none', 'important'); 
         }
+    }
+
+    if (emptyState) {
+        const emptyMessages = {
+            all: 'No tasks yet. Add your first task above.',
+            'in-progress': 'No open tasks. Nice work!',
+            completed: 'No completed tasks yet.',
+            trash: 'Your trash is empty.'
+        };
+        const showEmptyState = allTodos.length > 0 && visibleTodos.length === 0;
+        emptyState.textContent = showEmptyState ? emptyMessages[currentView] : '';
+        emptyState.classList.toggle('hidden', !showEmptyState);
     }
 
     // 3. WICHTIG: Filter-Buttons in der Sidebar IMMER sichtbar machen!
