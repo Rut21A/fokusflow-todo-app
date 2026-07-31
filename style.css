@@ -671,7 +671,7 @@ body {
         top: auto;
         left: auto;
         right: 10px;
-        bottom: 112px;
+        bottom: 150px;
         z-index: 20;
         max-height: calc(100vh - 160px);
         overflow-y: auto;
@@ -687,7 +687,7 @@ body {
 
     .todo-sidebar.quick-mode {
         right: -4px;
-        bottom: 112px;
+        bottom: 150px;
         overflow: hidden;
     }
 
