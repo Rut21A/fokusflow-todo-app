@@ -598,36 +598,74 @@ body {
         right: 12px;
         top: 4px;
         color: #444;
-        font-size: 14px;
+        font-size: 16px;
+    }
+
+    .github-dot {
+        color: #555;
+        font-size: 17px;
     }
 
     .mobile-logo {
         position: absolute;
-        top: 30px;
+        top: 39px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
         white-space: nowrap;
     }
 
     .mobile-logo strong {
         color: #fffdf6;
-        font-size: 44px;
+        font-size: 53px;
         font-family: Georgia, serif;
         font-style: italic;
-        letter-spacing: 2px;
+        letter-spacing: 4px;
         line-height: 1;
         -webkit-text-stroke: 2px #333;
         text-shadow: 3px 3px 0 #f4cf54;
     }
 
-    .mobile-logo span,
-    .mobile-logo i {
+    .mobile-diamonds {
         color: #efb3bd;
-        font-size: 18px;
+        font-size: 21px;
         font-style: normal;
+    }
+
+    .mobile-orbit {
+        width: 22px;
+        height: 22px;
+        margin-left: -2px;
+        margin-top: 26px;
+        border: 3px solid #333;
+        border-radius: 50%;
+        background: #f4cf54;
+        position: relative;
+    }
+
+    .mobile-orbit::before {
+        content: "◇";
+        position: absolute;
+        left: 50%;
+        bottom: 21px;
+        transform: translateX(-50%);
+        color: #efb3bd;
+        font-size: 25px;
+        line-height: 1;
+        text-shadow: 0 0 0 #333;
+    }
+
+    .mobile-orbit::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 23px;
+        width: 3px;
+        height: 23px;
+        transform: translateX(-50%);
+        background: #333;
     }
 
     .input-section {
