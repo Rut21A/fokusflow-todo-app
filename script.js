@@ -21,7 +21,9 @@ const trashCancelBtn = document.getElementById('trash-cancel-btn');
 const trashOkBtn = document.getElementById('trash-ok-btn');
 
 const sideButtons = document.querySelectorAll('.todo-sidebar .side-btn');
-let currentView = 'all'; 
+const validViews = ['all', 'in-progress', 'completed', 'trash'];
+let currentView = localStorage.getItem('todoView') || 'all';
+if (!validViews.includes(currentView)) currentView = 'all';
 
 // Variable, um zu speichern, welche Aktion gerade im Bestätigungsfenster offen ist
 let activeDeleteAction = '';
@@ -149,6 +151,7 @@ function updateMarkAllDoneVisibility() {
 // Filtert die Aufgabenliste nach dem ausgewählten Zustand
 function switchView(view) {
     currentView = view;
+    localStorage.setItem('todoView', currentView);
     const allTodos = document.querySelectorAll('.todo-list li');
     
     allTodos.forEach(li => {
