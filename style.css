@@ -97,7 +97,8 @@ body {
    4. LINKER KASTEN (TODO-APP - DYNAMISCH)
    ========================================================================== */
 .todo-app {
-    flex: 1;
+    width: 100%;
+    flex: 0 0 100%;
     /* Nimmt sich automatisch den restlichen Platz links, genau wie bei todo.uiineed.com */
     min-width: 0;
     /* Verhindert Layout-Ausbrüche */
@@ -175,6 +176,9 @@ body {
     flex-direction: column;
     gap: 10px;
     flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 20px);
     /* Blockiert das Zusammenquetschen */
 }
 
