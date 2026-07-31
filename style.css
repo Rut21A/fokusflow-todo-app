@@ -206,7 +206,7 @@ body {
 
 /* Farben der Sidebar-Buttons */
 .todo-sidebar #open-btn {
-    background-color: #fff !important;
+    background-color: #a7ddd3 !important;
     /* Mintgrün für OPEN */
 }
 
@@ -221,7 +221,7 @@ body {
     display: block;
 }
 
-.todo-sidebar > .side-btn:nth-child(odd):hover {
+.todo-sidebar > .side-btn:nth-child(odd):not(#open-btn):hover {
     background: #a7ddd3 !important;
 }
 
