@@ -242,10 +242,6 @@ body {
     display: block;
 }
 
-.todo-sidebar:not(.quick-mode) .quick-only {
-    display: none !important;
-}
-
 .todo-sidebar:not(.has-tasks) .task-only {
     display: none !important;
 }
