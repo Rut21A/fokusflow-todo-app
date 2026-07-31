@@ -41,11 +41,12 @@ body {
     width: 100%;
     position: relative;
     z-index: 10;
-    order: 2;
-    padding-top: 56px;
+    order: initial;
+    padding-top: 0;
 }
 
 .sidebar-toggle {
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -109,7 +110,7 @@ body {
     gap: 20px;
     /* Der exakte, saubere Abstand zwischen Kasten und Menü */
     position: relative;
-    order: 1;
+    order: initial;
 }
 
 /* ==========================================================================
@@ -225,7 +226,8 @@ body {
 
 /* Farben der Sidebar-Buttons */
 .todo-sidebar #open-btn {
-    display: none !important;
+    display: block !important;
+    background-color: #a7ddd3 !important;
     /* Mintgrün für OPEN */
 }
 
