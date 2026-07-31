@@ -455,6 +455,12 @@ body {
     min-width: 0;
 }
 
+.todo-content,
+.due-date {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .due-date {
     display: block;
     margin-top: 4px;
