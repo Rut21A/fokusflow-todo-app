@@ -281,7 +281,7 @@ body {
         linear-gradient(#333, #333) center calc(50% - 3px) / 10px 2px no-repeat,
         linear-gradient(#333, #333) center calc(50% + 3px) / 10px 2px no-repeat,
         #f7b7a9;
-    border-bottom: 2px solid #333;
+    border-bottom: 3px solid #333;
     font-size: 20px;
     position: absolute;
     top: 0;
