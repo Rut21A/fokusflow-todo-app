@@ -98,14 +98,15 @@ function updateMarkAllDoneVisibility() {
     if (todoFooter) {
         if (allTodos.length > 0) {
             const visibleCount = visibleTodos.length;
-            const filterNames = {
-                all: 'all tasks',
-                'in-progress': 'open tasks',
-                completed: 'completed tasks',
-                trash: 'trashed tasks'
-            };
             const unit = visibleCount === 1 ? 'task' : 'tasks';
-            todoFooter.textContent = `${visibleCount} ${filterNames[currentView] || ''} shown (${remainingTodos.length} ${unit} open)`;
+            const filterSummary = {
+                all: `${visibleCount} ${unit} shown`,
+                'in-progress': `${visibleCount} open ${unit} shown`,
+                completed: `${visibleCount} completed ${unit} shown`,
+                trash: `${visibleCount} trashed ${unit} shown`
+            };
+            const openUnit = remainingTodos.length === 1 ? 'task' : 'tasks';
+            todoFooter.textContent = `${filterSummary[currentView] || `${visibleCount} ${unit} shown`} (${remainingTodos.length} ${openUnit} open)`;
             todoFooter.classList.remove('hidden');
             todoFooter.style.setProperty('display', 'flex', 'important'); 
         } else {
