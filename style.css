@@ -166,7 +166,6 @@ body {
    ========================================================================== */
 .todo-sidebar {
     width: 200px;
-    height: 550px;
     /* Die exakte Originalbreite der Referenzseite */
     background: #fff;
     border: 3px solid #333;
