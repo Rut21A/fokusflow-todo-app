@@ -266,6 +266,12 @@ body {
     height: 26px !important;
 }
 
+.input-group input[type="date"] {
+    flex: 0 0 170px;
+    border-left: 3px solid #333;
+    padding: 12px;
+}
+
 .task-actions {
     display: flex;
     gap: 8px;
@@ -309,6 +315,18 @@ body {
 
 .todo-list li.checked .check-circle {
     background-color: #a7ddd3 !important;
+}
+
+.task-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.due-date {
+    display: block;
+    margin-top: 4px;
+    color: #6b7280;
+    font-size: 13px;
 }
 
 .empty-state {

@@ -1,5 +1,6 @@
 const addBtn = document.getElementById('add-btn');
 const todoInput = document.getElementById('todo-input');
+const dueDateInput = document.getElementById('due-date-input');
 const errorMsg = document.getElementById('error-msg');
 const usageTips = document.getElementById('usage-tips'); 
 const todolist = document.getElementById('todo-list'); 
@@ -46,7 +47,8 @@ function saveToLocalStorage() {
             todoData.push({
                 text: textDiv.innerText,
                 checked: li.classList.contains('checked'),
-                inTrash: li.classList.contains('in-trash')
+                inTrash: li.classList.contains('in-trash'),
+                dueDate: li.dataset.dueDate || ''
             });
         }
     });
@@ -67,10 +69,14 @@ function loadFromLocalStorage() {
         const li = document.createElement('li');
         if (item.checked) li.classList.add('checked');
         if (item.inTrash) li.classList.add('in-trash');
+        if (item.dueDate) li.dataset.dueDate = item.dueDate;
 
         li.innerHTML = `
             <span class="check-circle">${item.checked ? svgCheck : ''}</span>
-            <div class="todo-content">${item.text}</div>
+            <div class="task-main">
+                <div class="todo-content">${item.text}</div>
+                ${item.dueDate ? `<span class="due-date">Due: ${item.dueDate}</span>` : ''}
+            </div>
             <div class="task-actions">
                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
                 <span class="delete-btn">${svgCross}</span>
@@ -182,6 +188,7 @@ function switchView(view) {
 function checkInput() {
     if (!todoInput || !todolist) return;
     const text = todoInput.value.trim();
+    const dueDate = dueDateInput ? dueDateInput.value : '';
 
     if (text === "") {
         if (errorMsg) errorMsg.classList.remove('hidden');
@@ -190,9 +197,13 @@ function checkInput() {
         if (usageTips) usageTips.classList.add('hidden');
 
         const li = document.createElement('li');
+        if (dueDate) li.dataset.dueDate = dueDate;
         li.innerHTML = `
             <span class="check-circle"></span>
-            <div class="todo-content">${text}</div>
+            <div class="task-main">
+                <div class="todo-content">${text}</div>
+                ${dueDate ? `<span class="due-date">Due: ${dueDate}</span>` : ''}
+            </div>
             <div class="task-actions">
                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
                 <span class="delete-btn">${svgCross}</span>
@@ -201,6 +212,7 @@ function checkInput() {
         
         todolist.appendChild(li);
         todoInput.value = "";
+        if (dueDateInput) dueDateInput.value = "";
         saveToLocalStorage();
         switchView(currentView);
     }
@@ -422,7 +434,8 @@ if (exportBtn) {
                 todoData.push({
                     text: textDiv.innerText,
                     checked: li.classList.contains('checked'),
-                    inTrash: li.classList.contains('in-trash')
+                    inTrash: li.classList.contains('in-trash'),
+                    dueDate: li.dataset.dueDate || ''
                 });
             }
         });
@@ -455,11 +468,15 @@ if (fileInput) {
                         const li = document.createElement('li');
                         if (item.checked) li.classList.add('checked');
                         if (item.inTrash) li.classList.add('in-trash');
+                        if (item.dueDate) li.dataset.dueDate = item.dueDate;
                         
                         // KORREKTUR: Backticks für Template-Literal eingesetzt
                         li.innerHTML = `
                             <span class="check-circle">${item.checked ? svgCheck : ''}</span> 
-                            <div class="todo-content">${item.text}</div> 
+                            <div class="task-main">
+                                <div class="todo-content">${item.text}</div>
+                                ${item.dueDate ? `<span class="due-date">Due: ${item.dueDate}</span>` : ''}
+                            </div>
                             <div class="task-actions">
                                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
                                 <span class="delete-btn">${svgCross}</span>
