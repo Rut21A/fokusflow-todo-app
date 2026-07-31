@@ -211,13 +211,23 @@ body {
 }
 
 .todo-sidebar .side-btn.active {
-    background: #ffc8d0 !important;
+    outline: 3px solid #1f2937;
+    outline-offset: 2px;
     /* Rosa für den aktiven Zustand (z.B. All) */
 }
 
 .todo-sidebar label {
     width: 100%;
     display: block;
+}
+
+.todo-sidebar > .side-btn:nth-child(odd) {
+    background: #a7ddd3 !important;
+}
+
+.todo-sidebar > .side-btn:nth-child(even),
+.todo-sidebar > label .side-btn {
+    background: #ffc8d0 !important;
 }
 
 /* ==========================================================================
