@@ -270,6 +270,7 @@ body {
     flex: 0 0 170px;
     border-left: 3px solid #333;
     padding: 12px;
+    background: #a7ddd3;
 }
 
 .task-actions {
