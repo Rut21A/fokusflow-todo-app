@@ -278,8 +278,8 @@ body {
     justify-content: center;
     height: 48px;
     background:
-        linear-gradient(#333, #333) center calc(50% - 3px) / 10px 1px no-repeat,
-        linear-gradient(#333, #333) center calc(50% + 3px) / 10px 1px no-repeat,
+        linear-gradient(#333, #333) center calc(50% - 3px) / 10px 2px no-repeat,
+        linear-gradient(#333, #333) center calc(50% + 3px) / 10px 2px no-repeat,
         #f7b7a9;
     border-bottom: 2px solid #333;
     font-size: 20px;
@@ -302,6 +302,7 @@ body {
     background: #ffffff;
     font-size: 16px;
     font-weight: 500;
+    font-family: 'Poppins', sans-serif;
     writing-mode: vertical-lr;
 }
 
