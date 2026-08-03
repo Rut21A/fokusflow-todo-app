@@ -508,7 +508,7 @@ if (fileInput) {
                         
                         // KORREKTUR: Backticks für Template-Literal eingesetzt
                         li.innerHTML = `
-                            <button class="check-circle" type="button" aria-label="Mark task as completed" aria-pressed="${item.checked ? 'true' : 'false'}">${item.checked ? svgCheck : ''}</button> 
+                            <button class="check-circle" type="button" aria-label="Mark task as completed" aria-pressed="${item.checked ? 'true' : 'false'}">${item.checked ? svgCheck : ''}</button>
                             <div class="task-main">
                                 <div class="todo-content">${item.text}</div>
                                 ${item.dueDate ? `<span class="due-date">Due date: ${item.dueDate}</span>` : ''}
