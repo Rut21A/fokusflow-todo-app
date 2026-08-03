@@ -278,6 +278,7 @@ if (todolist) {
                 editInput.type = 'text';
                 editInput.className = 'todo-edit-input';
                 editInput.value = originalText;
+                editInput.setAttribute('aria-label', `Edit ${originalText}`);
                 textDiv.replaceWith(editInput);
                 editInput.focus();
                 editInput.select();
@@ -288,6 +289,7 @@ if (todolist) {
                 cancelButton.type = 'button';
                 cancelButton.className = 'cancel-edit-btn';
                 cancelButton.textContent = 'Cancel';
+                cancelButton.setAttribute('aria-label', `Cancel editing ${originalText}`);
                 if (taskActions) taskActions.prepend(cancelButton);
                 if (editButton) editButton.classList.add('hidden');
 

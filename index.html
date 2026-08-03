@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TO-Do List App - Easy Tutorials</title>
-    <link rel="stylesheet" href="style.css?v=49">
+    <link rel="stylesheet" href="style.css?v=50">
     <link href="https://googleapis.com" rel="stylesheet">
 
 </head>
@@ -63,7 +63,7 @@
                 </div>
 
                     <!-- KORREKTUR: Hier ist deine fehlende To-Do-Liste! -->
-                    <ul id="todo-list" class="todo-list"></ul>
+                    <ul id="todo-list" class="todo-list" aria-label="Tasks"></ul>
                     <p id="empty-state" class="empty-state hidden" aria-live="polite"></p>
                 </div>
 
@@ -85,7 +85,7 @@
                 <button class="side-btn btn-white btn-hidden task-only" id="export-btn" type="button">Export data</button>
             
                 <button class="side-btn btn-white" id="import-btn" type="button">Import(txt/json)</button>
-                <input type="file" id="file-input" accept=".txt,.json" style="display: none;">
+                <input type="file" id="file-input" accept=".txt,.json" aria-label="Choose a task file to import" style="display: none;">
             </aside>
 
 
@@ -104,7 +104,7 @@
     </div>
 </div>
 
-    <script src="script.js?v=49"></script>
+    <script src="script.js?v=50"></script>
 </body>
 
 </html>
