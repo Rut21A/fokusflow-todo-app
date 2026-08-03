@@ -41,6 +41,21 @@ const svgCross = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" str
 const svgCheck = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px; display:block;"><path d="M20 6L9 17l-5-5"/></svg>`;
 const svgEdit = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px; display:block;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`;
 
+function updateTaskButtonLabels(li) {
+    const taskText = li.querySelector('.todo-content')?.innerText.trim() || 'task';
+    const isCompleted = li.classList.contains('checked');
+    const checkButton = li.querySelector('.check-circle');
+    const editButton = li.querySelector('.edit-btn');
+    const deleteButton = li.querySelector('.delete-btn');
+
+    if (checkButton) {
+        checkButton.setAttribute('aria-label', `Mark ${taskText} as ${isCompleted ? 'incomplete' : 'completed'}`);
+        checkButton.setAttribute('aria-pressed', String(isCompleted));
+    }
+    if (editButton) editButton.setAttribute('aria-label', `Edit ${taskText}`);
+    if (deleteButton) deleteButton.setAttribute('aria-label', `Delete ${taskText}`);
+}
+
 // Speichert den Zustand aller Aufgaben im lokalen Speicher des Browsers
 function saveToLocalStorage() {
     if (!todolist) return;
@@ -88,6 +103,7 @@ function loadFromLocalStorage() {
             </div>
         `;
         todolist.appendChild(li);
+        updateTaskButtonLabels(li);
     });
 }
 
@@ -217,6 +233,7 @@ function checkInput() {
         `;
         
         todolist.appendChild(li);
+        updateTaskButtonLabels(li);
         todoInput.value = "";
         if (dueDateInput) dueDateInput.value = "";
         saveToLocalStorage();
@@ -283,6 +300,7 @@ if (todolist) {
                     editInput.replaceWith(textDiv);
                     cancelButton.remove();
                     if (editButton) editButton.classList.remove('hidden');
+                    updateTaskButtonLabels(li);
                     if (saveChanges && updatedText) saveToLocalStorage();
                 };
 
@@ -309,6 +327,7 @@ if (todolist) {
                     circle.innerHTML = li.classList.contains('checked') ? svgCheck : '';
                     circle.setAttribute('aria-pressed', String(li.classList.contains('checked')));
                 }
+                updateTaskButtonLabels(li);
                 saveToLocalStorage();
                 switchView(currentView);
             }
@@ -526,6 +545,7 @@ if (fileInput) {
                             </div>
                         `;
                         todolist.appendChild(li);
+                        updateTaskButtonLabels(li);
                     });
                     saveToLocalStorage();
                     switchView(currentView);
