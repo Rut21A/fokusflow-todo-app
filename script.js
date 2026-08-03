@@ -487,6 +487,13 @@ if (exportBtn) {
 
 // Import data: JSON- oder TXT-Datei einlesen
 const fileInput = document.getElementById('file-input');
+const importBtn = document.getElementById('import-btn');
+if (importBtn && fileInput) {
+    importBtn.addEventListener('click', function() {
+        fileInput.click();
+    });
+}
+
 if (fileInput) {
     fileInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
