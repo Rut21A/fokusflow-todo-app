@@ -384,6 +384,8 @@ body {
     cursor: pointer;
     background-color: #ffffff !important;
     flex-shrink: 0;
+    padding: 0;
+    font: inherit;
 }
 
 .check-circle {

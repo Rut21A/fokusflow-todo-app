@@ -77,14 +77,14 @@ function loadFromLocalStorage() {
         if (item.dueDate) li.dataset.dueDate = item.dueDate;
 
         li.innerHTML = `
-            <span class="check-circle">${item.checked ? svgCheck : ''}</span>
+            <button class="check-circle" type="button" aria-label="Mark task as completed" aria-pressed="${item.checked ? 'true' : 'false'}">${item.checked ? svgCheck : ''}</button>
             <div class="task-main">
                 <div class="todo-content">${item.text}</div>
                 ${item.dueDate ? `<span class="due-date">Due date: ${item.dueDate}</span>` : ''}
             </div>
             <div class="task-actions">
                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
-                <span class="delete-btn">${svgCross}</span>
+                <button class="delete-btn" type="button" aria-label="Delete task">${svgCross}</button>
             </div>
         `;
         todolist.appendChild(li);
@@ -205,14 +205,14 @@ function checkInput() {
         const li = document.createElement('li');
         if (dueDate) li.dataset.dueDate = dueDate;
         li.innerHTML = `
-            <span class="check-circle"></span>
+            <button class="check-circle" type="button" aria-label="Mark task as completed" aria-pressed="false"></button>
             <div class="task-main">
                 <div class="todo-content">${text}</div>
                 ${dueDate ? `<span class="due-date">Due date: ${dueDate}</span>` : ''}
             </div>
             <div class="task-actions">
                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
-                <span class="delete-btn">${svgCross}</span>
+                <button class="delete-btn" type="button" aria-label="Delete task">${svgCross}</button>
             </div>
         `;
         
@@ -307,6 +307,7 @@ if (todolist) {
                 const circle = li.querySelector('.check-circle');
                 if (circle) {
                     circle.innerHTML = li.classList.contains('checked') ? svgCheck : '';
+                    circle.setAttribute('aria-pressed', String(li.classList.contains('checked')));
                 }
                 saveToLocalStorage();
                 switchView(currentView);
@@ -327,6 +328,17 @@ if (todolist) {
                 switchView(currentView); 
             }, 200);
         }
+    });
+}
+
+// Die beiden Aktions-Buttons auch zuverlässig per Enter oder Leertaste auslösen.
+if (todolist) {
+    todolist.addEventListener('keydown', function(event) {
+        const actionButton = event.target.closest('.check-circle, .delete-btn');
+        if (!actionButton || (event.key !== 'Enter' && event.key !== ' ')) return;
+
+        event.preventDefault();
+        actionButton.click();
     });
 }
 
@@ -401,7 +413,10 @@ if (confirmModal && modalOkBtn) {
             visibleTodos.forEach(li => {
                 li.classList.add('checked');
                 const circle = li.querySelector('.check-circle');
-                if (circle) circle.innerHTML = svgCheck;
+                if (circle) {
+                    circle.innerHTML = svgCheck;
+                    circle.setAttribute('aria-pressed', 'true');
+                }
             });
         } else if (activeDeleteAction === 'clear-completed') {
             const completedTodos = document.querySelectorAll('.todo-list li.checked');
@@ -433,7 +448,10 @@ if (finishAllBtn) {
         visibleTodos.forEach(li => {
             li.classList.add('checked');
             const circle = li.querySelector('.check-circle');
-            if (circle) circle.innerHTML = svgCheck;
+            if (circle) {
+                circle.innerHTML = svgCheck;
+                circle.setAttribute('aria-pressed', 'true');
+            }
         });
         saveToLocalStorage();
         switchView(currentView);
@@ -490,14 +508,14 @@ if (fileInput) {
                         
                         // KORREKTUR: Backticks für Template-Literal eingesetzt
                         li.innerHTML = `
-                            <span class="check-circle">${item.checked ? svgCheck : ''}</span> 
+                            <button class="check-circle" type="button" aria-label="Mark task as completed" aria-pressed="${item.checked ? 'true' : 'false'}">${item.checked ? svgCheck : ''}</button> 
                             <div class="task-main">
                                 <div class="todo-content">${item.text}</div>
                                 ${item.dueDate ? `<span class="due-date">Due date: ${item.dueDate}</span>` : ''}
                             </div>
                             <div class="task-actions">
                                 <button class="edit-btn" type="button" aria-label="Edit task">${svgEdit}</button>
-                                <span class="delete-btn">${svgCross}</span>
+                                <button class="delete-btn" type="button" aria-label="Delete task">${svgCross}</button>
                             </div>
                         `;
                         todolist.appendChild(li);
