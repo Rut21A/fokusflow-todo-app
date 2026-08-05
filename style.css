@@ -54,7 +54,7 @@ body {
     border: 2px solid #4a4548;
     background: #f9d3e5;
     transform: rotate(45deg);
-    animation: sparkle-turn 30s linear infinite;
+    animation: sparkle-turn 3s linear infinite;
 }
 
 .brand-sparkles span:last-child {
