@@ -31,6 +31,91 @@ body {
     overflow: visible;
 }
 
+/* Logo mit sanft schwingendem Pendel */
+.brand-header {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 12px;
+}
+
+.brand-sparkles {
+    display: flex;
+    gap: 9px;
+    color: #f3b6ca;
+    font-size: 26px;
+    font-weight: 700;
+    transform: translateY(-2px);
+}
+
+.brand-sparkles span:last-child {
+    color: #f9d0dc;
+}
+
+.brand-logo {
+    margin: 0;
+    color: #fffdf7;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 7vw, 68px);
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 3px;
+    line-height: 1;
+    text-shadow: 4px 4px 0 #f4ce4a, 5px 5px 0 #333;
+    -webkit-text-stroke: 2px #333;
+    transform: rotate(-5deg);
+}
+
+.brand-pendulum {
+    width: 34px;
+    height: 72px;
+    position: relative;
+    transform-origin: 50% 8px;
+    animation: pendulum-swing 2.8s ease-in-out infinite;
+}
+
+.pendulum-top {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 14px;
+    height: 14px;
+    border: 3px solid #3b3b3b;
+    background: #b8e3db;
+    transform: rotate(45deg);
+}
+
+.pendulum-string {
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    width: 3px;
+    height: 36px;
+    background: #3b3b3b;
+}
+
+.pendulum-weight {
+    position: absolute;
+    top: 53px;
+    left: 7px;
+    width: 21px;
+    height: 21px;
+    border: 3px solid #3b3b3b;
+    border-radius: 50%;
+    background: #f4ce4a;
+}
+
+@keyframes pendulum-swing {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brand-pendulum { animation: none; }
+}
+
 /* ==========================================================================
    2. EINGABEZEILE (OBEN)
    ========================================================================== */
