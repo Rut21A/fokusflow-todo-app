@@ -21,6 +21,11 @@ const modalOkBtn = document.getElementById('modal-ok-btn');
 const trashModal = document.getElementById('trash-modal');
 const trashCancelBtn = document.getElementById('trash-cancel-btn');
 const trashOkBtn = document.getElementById('trash-ok-btn');
+const aboutBtn = document.getElementById('about-btn');
+const aboutModal = document.getElementById('about-modal');
+const aboutCloseBtn = document.getElementById('about-close-btn');
+const langEnBtn = document.getElementById('lang-en');
+const langDeBtn = document.getElementById('lang-de');
 
 const sideButtons = document.querySelectorAll('.todo-sidebar .side-btn');
 const validViews = ['all', 'in-progress', 'completed', 'trash'];
@@ -35,6 +40,77 @@ if (isQuickMode && openBtn && largeSidebar) {
 // Variable, um zu speichern, welche Aktion gerade im Bestätigungsfenster offen ist
 let activeDeleteAction = '';
 let feedbackTimer;
+
+const translations = {
+    en: {
+        about: 'About', aboutTitle: 'About Ruta',
+        aboutText: 'Hi, I’m Ruta — a junior developer who turns small ideas into clear, friendly web experiences. FokusFlow is my playful space for better focus, one task at a time.',
+        inputPlaceholder: 'Add a to-do item...', newTaskLabel: 'New task', dueDateLabel: 'Optional due date', add: 'Add', markAll: 'Mark All Done',
+        title: 'Act Now, Simplify Life. ☕', tipTitle: 'Add Your First To-Do Item! 📝', tips: 'Usage Tips 💡 :',
+        tipLines: ['Press Enter to submit actions.', 'Drag to reorder your to-dos (PC only)', 'Double-click to edit slogan and tasks.', 'Access quick actions in the right sidebar.', 'Your data is stored locally in your browser.', 'Supports data download and import.'],
+        tasks: 'Tasks', all: 'All', inProgress: 'In Progress', completed: 'Completed', trash: 'Trash', finishAll: 'Finish all', clearCompleted: 'Clear Completed', clearAll: 'Clear All', export: 'Export data', import: 'Import(txt/json)', chooseFile: 'Choose a task file to import'
+    },
+    de: {
+        about: 'Über mich', aboutTitle: 'Über Ruta',
+        aboutText: 'Hi, ich bin Ruta — Junior Entwicklerin mit Freude an klaren, freundlichen Web-Erlebnissen. FokusFlow ist mein spielerischer Ort für mehr Fokus, eine Aufgabe nach der anderen.',
+        inputPlaceholder: 'Neue Aufgabe hinzufügen...', newTaskLabel: 'Neue Aufgabe', dueDateLabel: 'Optionales Datum', add: 'Hinzufügen', markAll: 'Alle erledigen',
+        title: 'Jetzt handeln, Leben vereinfachen. ☕', tipTitle: 'Füge deine erste Aufgabe hinzu! 📝', tips: 'Tipps 💡 :',
+        tipLines: ['Drücke Enter, um eine Aufgabe hinzuzufügen.', 'Ziehe Aufgaben zum Sortieren (nur PC).', 'Doppelklicke zum Bearbeiten von Titel und Aufgaben.', 'Nutze die Schnellaktionen rechts.', 'Deine Daten werden lokal im Browser gespeichert.', 'Du kannst Daten herunterladen und importieren.'],
+        tasks: 'Aufgaben', all: 'Alle', inProgress: 'Offen', completed: 'Erledigt', trash: 'Papierkorb', finishAll: 'Alle erledigen', clearCompleted: 'Erledigte löschen', clearAll: 'Alles löschen', export: 'Daten exportieren', import: 'Importieren (txt/json)', chooseFile: 'Datei zum Importieren auswählen'
+    }
+};
+
+let currentLanguage = localStorage.getItem('todoLanguage') || 'en';
+if (!translations[currentLanguage]) currentLanguage = 'en';
+
+function applyLanguage(language) {
+    currentLanguage = language;
+    localStorage.setItem('todoLanguage', language);
+    document.documentElement.lang = language;
+    const copy = translations[language];
+    const setText = (id, text) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = text;
+    };
+
+    if (todoInput) {
+        todoInput.placeholder = copy.inputPlaceholder;
+        todoInput.setAttribute('aria-label', copy.newTaskLabel);
+    }
+    if (dueDateInput) dueDateInput.setAttribute('aria-label', copy.dueDateLabel);
+    if (addBtn) addBtn.textContent = copy.add;
+    if (markAllDoneBtn) markAllDoneBtn.textContent = copy.markAll;
+    if (todolist) todolist.setAttribute('aria-label', copy.tasks);
+    if (document.querySelector('.title')) document.querySelector('.title').textContent = copy.title;
+    if (usageTips) {
+        const tipTitle = usageTips.querySelector('h3');
+        const tipSubtitle = usageTips.querySelector('.tips-sub');
+        if (tipTitle) tipTitle.textContent = copy.tipTitle;
+        if (tipSubtitle) tipSubtitle.textContent = copy.tips;
+        usageTips.querySelectorAll('li').forEach((item, index) => {
+            const icon = item.querySelector('span');
+            item.textContent = copy.tipLines[index] || '';
+            if (icon) item.prepend(icon, ' ');
+        });
+    }
+    setText('about-btn', copy.about);
+    setText('about-title', copy.aboutTitle);
+    setText('about-text', copy.aboutText);
+    setText('all-btn', copy.all);
+    setText('in-progress-btn', copy.inProgress);
+    setText('completed-btn', copy.completed);
+    setText('trash-btn', copy.trash);
+    setText('finish-all-btn', copy.finishAll);
+    setText('clear-completed-btn', copy.clearCompleted);
+    setText('clear-all-btn', copy.clearAll);
+    setText('export-btn', copy.export);
+    setText('import-btn', copy.import);
+    const fileInput = document.getElementById('file-input');
+    if (fileInput) fileInput.setAttribute('aria-label', copy.chooseFile);
+
+    if (langEnBtn) langEnBtn.setAttribute('aria-pressed', String(language === 'en'));
+    if (langDeBtn) langDeBtn.setAttribute('aria-pressed', String(language === 'de'));
+}
 
 // Das exakte, geschwungene SVG-Kreuz (X)
 const svgCross = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
@@ -274,6 +350,34 @@ if (openBtn && largeSidebar) {
         }
     });
 }
+
+if (aboutBtn && aboutModal) {
+    aboutBtn.addEventListener('click', () => {
+        aboutModal.classList.remove('hidden');
+        if (aboutCloseBtn) aboutCloseBtn.focus();
+    });
+}
+
+if (aboutCloseBtn && aboutModal) {
+    aboutCloseBtn.addEventListener('click', () => aboutModal.classList.add('hidden'));
+}
+
+if (aboutModal) {
+    aboutModal.addEventListener('click', event => {
+        if (event.target === aboutModal) aboutModal.classList.add('hidden');
+    });
+}
+
+if (langEnBtn) langEnBtn.addEventListener('click', () => applyLanguage('en'));
+if (langDeBtn) langDeBtn.addEventListener('click', () => applyLanguage('de'));
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && aboutModal && !aboutModal.classList.contains('hidden')) {
+        aboutModal.classList.add('hidden');
+        if (aboutBtn) aboutBtn.focus();
+    }
+});
+
 if (todoInput) {
     todoInput.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
@@ -599,6 +703,7 @@ if (fileInput) {
 }
 
 // Initialer Start beim Laden der App
+applyLanguage(currentLanguage);
 loadFromLocalStorage();
 switchView(currentView);
 updateMarkAllDoneVisibility();

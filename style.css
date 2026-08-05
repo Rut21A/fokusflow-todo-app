@@ -42,6 +42,58 @@ body {
     gap: 12px;
 }
 
+.top-nav {
+    position: absolute;
+    top: -24px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    font-size: 16px;
+    z-index: 3;
+}
+
+.github-link,
+.nav-btn,
+.lang-btn {
+    color: inherit;
+    font: inherit;
+    font-weight: 500;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.github-link svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: #5d6569;
+}
+
+.github-link:hover svg,
+.nav-btn:hover,
+.lang-btn:hover,
+.lang-btn[aria-pressed="true"] {
+    color: #333;
+    transform: translateY(-1px);
+}
+
+.language-switch {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lang-btn[aria-pressed="true"] {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .brand-sparkles {
     display: flex;
     gap: 12px;
@@ -725,6 +777,33 @@ input:focus-visible,
     box-shadow: 4px 4px 0px #333;
     text-align: center;
     max-width: 350px;
+}
+
+.about-modal {
+    position: relative;
+    max-width: 390px;
+    text-align: left;
+}
+
+.about-modal h2 {
+    margin-bottom: 10px;
+}
+
+.about-modal p {
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.about-close {
+    position: absolute;
+    top: 8px;
+    right: 11px;
+    border: 0;
+    background: transparent;
+    color: #333;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
 }
 
 .modal-buttons {
