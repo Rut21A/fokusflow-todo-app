@@ -2,6 +2,10 @@
 
 Eine einfache und übersichtliche To-do-App für den Browser. Sie hilft dir, Aufgaben festzuhalten, den Überblick zu behalten und Erledigtes abzuhaken.
 
+## Live App
+
+[Open FocusFlow](https://rut21a.github.io/fokusflow-todo-app/)
+
 ## Funktionen
 
 - Aufgaben hinzufügen und erledigen
