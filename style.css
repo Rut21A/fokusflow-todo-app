@@ -154,8 +154,8 @@ body {
 }
 
 @keyframes pendulum-swing {
-    0%, 100% { transform: rotate(36deg); }
-    50% { transform: rotate(62deg); }
+    0%, 100% { transform: rotate(62deg); }
+    50% { transform: rotate(-62deg); }
 }
 
 @keyframes sparkle-turn {
