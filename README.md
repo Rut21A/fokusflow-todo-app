@@ -48,3 +48,13 @@ http://127.0.0.1:5173/
 - Empty task text is blocked with a clear message.
 - Clearing task data keeps the app usable.
 - Adding, editing, filtering, and deleting tasks were tested without console errors.
+
+## Deploy with GitHub Pages
+
+This app is ready for GitHub Pages because it uses only HTML, CSS, and JavaScript.
+
+1. Open the repository on GitHub and choose **Settings**.
+2. Open **Pages** in the left menu.
+3. Under **Build and deployment**, select **Deploy from a branch**.
+4. Choose the branch **main**, the folder **/(root)**, then click **Save**.
+5. GitHub will show the public app link after a short moment.
