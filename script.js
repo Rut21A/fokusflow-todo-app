@@ -167,16 +167,17 @@ function updateMarkAllDoneVisibility() {
         emptyState.classList.toggle('hidden', !showEmptyState);
     }
 
-    // 3. WICHTIG: Filter-Buttons in der Sidebar IMMER sichtbar machen!
+    // 3. In der leeren Ansicht bleiben nur die drei sinnvollen Schnellaktionen sichtbar.
+    const hasItems = allTodos.length > 0;
+    const emptyStateButtons = ['all-btn', 'open-btn', 'import-btn'];
     const mainFilterButtons = ['all-btn', 'in-progress-btn', 'completed-btn', 'trash-btn', 'export-btn', 'open-btn', 'import-btn'];
     mainFilterButtons.forEach(id => {
         const btn = document.getElementById(id);
-        if (btn) btn.classList.remove('btn-hidden');
+        if (btn) btn.classList.toggle('btn-hidden', !hasItems && !emptyStateButtons.includes(id));
     });
 
     // 4. Reine Aktionsknöpfe nur einblenden, wenn To-Dos in der Liste existieren
     const actionButtons = ['finish-all-btn', 'clear-completed-btn', 'clear-all-btn'];
-    const hasItems = allTodos.length > 0;
     if (largeSidebar) largeSidebar.classList.toggle('has-tasks', hasItems);
     actionButtons.forEach(id => {
         const btn = document.getElementById(id);
@@ -260,9 +261,9 @@ if (openBtn && largeSidebar) {
         largeSidebar.classList.toggle('quick-mode', isQuickMode);
         openBtn.textContent = isQuickMode ? 'QUICKS' : 'OPEN ✨';
 
-        // Beim Öffnen alle verfügbaren Schnellaktionen zeigen.
+        // Beim Öffnen die zu den vorhandenen Aufgaben passenden Aktionen zeigen.
         if (!isQuickMode) {
-            sideButtons.forEach(button => button.classList.remove('btn-hidden'));
+            updateMarkAllDoneVisibility();
         }
     });
 }
