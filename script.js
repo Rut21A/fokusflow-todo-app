@@ -149,8 +149,9 @@ function updateMarkAllDoneVisibility() {
             todoFooter.classList.remove('hidden');
             todoFooter.style.setProperty('display', 'flex', 'important'); 
         } else {
-            todoFooter.textContent = ""; 
-            todoFooter.style.setProperty('display', 'none', 'important'); 
+            todoFooter.textContent = 'All completed, good job!';
+            todoFooter.classList.remove('hidden');
+            todoFooter.style.setProperty('display', 'flex', 'important');
         }
     }
 
