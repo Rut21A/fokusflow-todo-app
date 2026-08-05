@@ -107,34 +107,29 @@ body {
 
 .pendulum-top {
     position: absolute;
-    top: 0;
-    left: 14px;
-    width: 22px;
-    height: 27px;
-    background: #a7ddd3;
-    clip-path: polygon(50% 0, 92% 15%, 88% 62%, 50% 100%, 12% 62%, 8% 15%);
-    filter: drop-shadow(0 0 0 #333) drop-shadow(1px 1px 0 #333) drop-shadow(-1px -1px 0 #333);
+    top: 2px;
+    left: 18px;
+    width: 13px;
+    height: 13px;
+    border: 3px solid #3b3b3b;
+    background: #b8e3db;
+    transform: rotate(45deg);
 }
 
 .pendulum-top::after {
     content: "";
     position: absolute;
-    inset: 3px;
+    inset: 4px;
+    border: 1px solid #333;
     background: #fff;
-    clip-path: polygon(50% 0, 92% 15%, 88% 62%, 50% 100%, 12% 62%, 8% 15%);
 }
 
 .pendulum-top::before {
     content: "";
     position: absolute;
-    top: 8px;
-    left: 7px;
-    width: 7px;
-    height: 7px;
-    border: 2px solid #333;
-    background: #ffc8d0;
+    inset: 2px;
+    background: #f7b7a9;
     transform: rotate(45deg);
-    z-index: 1;
 }
 
 .pendulum-motion {
