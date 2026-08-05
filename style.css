@@ -45,6 +45,14 @@ body {
     padding-top: 0;
 }
 
+/* Klarer Fokus für die Bedienung mit Tab und Screenreader. */
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #2563eb !important;
+    outline-offset: 3px;
+}
+
 .sidebar-toggle {
     display: none;
     position: absolute;
