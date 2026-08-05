@@ -56,7 +56,7 @@ body {
     height: 11px;
     display: block;
     border: 2px solid #4a4548;
-    background: #a7ddd3;
+    background: #ffc8d0;
     transform: rotate(45deg);
     animation: sparkle-turn 3s linear infinite;
 }
@@ -175,105 +175,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     .pendulum-motion { animation: none; }
-}
-
-/* Moderner TODO-Titel: feine Konturen, Planung und Erledigt */
-.brand-header {
-    min-height: 96px;
-    margin-bottom: -20px;
-}
-
-.brand-logo {
-    position: static;
-    transform: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #333;
-    font-family: 'Poppins', sans-serif;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: 1;
-    text-shadow: none;
-    -webkit-text-stroke: 0;
-}
-
-.brand-logo .letter-t,
-.brand-logo .letter-d {
-    transform: none;
-    translate: none;
-}
-
-.brand-logo .letter-t {
-    color: #fff;
-    -webkit-text-stroke: 5px #333;
-}
-
-.brand-logo .letter-d {
-    color: #fff;
-    -webkit-text-stroke: 5px #333;
-}
-
-.brand-logo .letter-o-first,
-.brand-logo .letter-o-last {
-    width: 68px;
-    height: 68px;
-    position: relative;
-    display: inline-block;
-    flex: 0 0 68px;
-    border: 5px solid #333;
-    border-radius: 50%;
-    background: #fff;
-    font-size: 0;
-    transform: none;
-}
-
-.brand-logo .letter-o-first {
-    border-color: #a7ddd3;
-}
-
-.brand-logo .letter-o-first::before {
-    content: "";
-    position: absolute;
-    top: 18px;
-    left: 16px;
-    width: 26px;
-    height: 29px;
-    border: 4px solid #333;
-    border-radius: 6px;
-    background: #fff;
-    box-sizing: border-box;
-}
-
-.brand-logo .letter-o-first::after {
-    content: "";
-    position: absolute;
-    top: 29px;
-    left: 23px;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #333;
-    box-shadow: 10px 0 #333, 0 8px #333, 10px 8px #333;
-}
-
-.brand-logo .letter-o-last {
-    border-color: #ffc8d0;
-}
-
-.brand-logo .letter-o-last::after {
-    content: "";
-    position: absolute;
-    top: 18px;
-    left: 17px;
-    width: 29px;
-    height: 15px;
-    border-bottom: 7px solid #333;
-    border-left: 7px solid #333;
-    border-radius: 2px;
-    transform: rotate(-45deg);
 }
 
 /* ==========================================================================
