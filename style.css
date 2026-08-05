@@ -33,7 +33,7 @@ body {
 
 /* Logo mit sanft schwingendem Pendel */
 .brand-header {
-    min-height: 82px;
+    min-height: 88px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,43 +43,47 @@ body {
 
 .brand-sparkles {
     display: flex;
-    gap: 9px;
-    color: #f3b6ca;
-    font-size: 26px;
-    font-weight: 700;
-    transform: translateY(-2px);
+    gap: 12px;
+    transform: translateY(-7px);
+}
+
+.brand-sparkles span {
+    width: 11px;
+    height: 11px;
+    display: block;
+    border: 2px solid #4a4548;
+    background: #f9d3e5;
+    transform: rotate(45deg);
 }
 
 .brand-sparkles span:last-child {
-    color: #f9d0dc;
+    background: #fff;
 }
 
 .brand-logo {
     margin: 0;
     color: #fffdf7;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(42px, 7vw, 68px);
+    font-size: clamp(42px, 6vw, 56px);
     font-style: italic;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     line-height: 1;
-    text-shadow: 4px 4px 0 #f4ce4a, 5px 5px 0 #333;
+    text-shadow: 3px 3px 0 #f4ce4a, 4px 4px 0 #333;
     -webkit-text-stroke: 2px #333;
     transform: rotate(-5deg);
 }
 
 .brand-pendulum {
-    width: 34px;
-    height: 72px;
+    width: 50px;
+    height: 90px;
     position: relative;
-    transform-origin: 50% 8px;
-    animation: pendulum-swing 2.8s ease-in-out infinite;
 }
 
 .pendulum-top {
     position: absolute;
-    top: 5px;
-    left: 10px;
+    top: 2px;
+    left: 18px;
     width: 14px;
     height: 14px;
     border: 3px solid #3b3b3b;
@@ -87,10 +91,21 @@ body {
     transform: rotate(45deg);
 }
 
+.pendulum-motion {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 50px;
+    height: 80px;
+    display: block;
+    transform-origin: 25px 10px;
+    animation: pendulum-swing 1.8s ease-in-out infinite;
+}
+
 .pendulum-string {
     position: absolute;
-    top: 20px;
-    left: 16px;
+    top: 0;
+    left: 24px;
     width: 3px;
     height: 36px;
     background: #3b3b3b;
@@ -98,8 +113,8 @@ body {
 
 .pendulum-weight {
     position: absolute;
-    top: 53px;
-    left: 7px;
+    top: 50px;
+    left: 14px;
     width: 21px;
     height: 21px;
     border: 3px solid #3b3b3b;
@@ -108,12 +123,12 @@ body {
 }
 
 @keyframes pendulum-swing {
-    0%, 100% { transform: rotate(-10deg); }
-    50% { transform: rotate(10deg); }
+    0%, 100% { transform: rotate(-45deg); }
+    50% { transform: rotate(45deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .brand-pendulum { animation: none; }
+    .pendulum-motion { animation: none; }
 }
 
 /* ==========================================================================
