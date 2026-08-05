@@ -249,6 +249,13 @@ function checkInput() {
         todoInput.value = "";
         if (dueDateInput) dueDateInput.value = "";
         saveToLocalStorage();
+
+        // Auf dem Handy öffnet sich Quicks nach der ersten Aufgabe automatisch.
+        if (window.matchMedia('(max-width: 620px)').matches && isQuickMode && largeSidebar && openBtn) {
+            isQuickMode = false;
+            largeSidebar.classList.remove('quick-mode');
+            openBtn.textContent = 'OPEN ✨';
+        }
         switchView(currentView);
         showFeedback('Task added.');
     }
