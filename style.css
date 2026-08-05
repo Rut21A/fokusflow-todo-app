@@ -119,9 +119,17 @@ body {
 .pendulum-top::after {
     content: "";
     position: absolute;
-    inset: 3px;
-    border: 2px solid #f7b7a9;
+    inset: 4px;
+    border: 1px solid #333;
     background: #fff;
+}
+
+.pendulum-top::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #f7b7a9;
+    transform: rotate(45deg);
 }
 
 .pendulum-motion {
