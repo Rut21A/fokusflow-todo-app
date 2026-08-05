@@ -169,7 +169,7 @@ function updateMarkAllDoneVisibility() {
 
     // 3. In der leeren Ansicht bleiben nur die drei sinnvollen Schnellaktionen sichtbar.
     const hasItems = allTodos.length > 0;
-    const emptyStateButtons = ['all-btn', 'open-btn', 'import-btn'];
+    const emptyStateButtons = ['all-btn', 'trash-btn', 'open-btn', 'import-btn'];
     const mainFilterButtons = ['all-btn', 'in-progress-btn', 'completed-btn', 'trash-btn', 'export-btn', 'open-btn', 'import-btn'];
     mainFilterButtons.forEach(id => {
         const btn = document.getElementById(id);
