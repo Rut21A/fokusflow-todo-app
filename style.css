@@ -95,7 +95,7 @@ body {
 .brand-logo .letter-o-first { transform: rotate(10deg) translateY(3px); }
 .brand-logo .letter-d { transform: rotate(6deg) translateY(1px); }
 .brand-logo .letter-o-last {
-    transform: rotate(-25deg) translateY(3px);
+    transform: rotate(-35deg) translateY(3px);
 }
 
 .brand-pendulum {
