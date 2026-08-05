@@ -697,6 +697,11 @@ input:focus-visible,
     color: #4b5563;
     border-top: 3px solid #333;
     background: #fff;
+    transition: background-color 0.23s ease;
+}
+
+.todo-footer:hover {
+    background-color: #FDF6E2;
 }
 
 .modal-overlay {
