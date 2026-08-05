@@ -101,7 +101,7 @@ input:focus-visible,
 }
 
 .error-text {
-    color: #8a3f35;
+    color: #754239;
     font-weight: bold;
     margin-top: 5px;
 }
@@ -653,8 +653,8 @@ input:focus-visible,
     }
 
     .input-section .error-text {
-        background: #fce1dc;
-        border: 2px solid #f0a495;
+        background: #f6b4a8;
+        border: 2px solid #df8f83;
     }
 
     .input-section .status-text {
