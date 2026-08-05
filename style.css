@@ -45,6 +45,9 @@ body {
 .brand-sparkles {
     display: flex;
     gap: 12px;
+    margin-right: 18px;
+    position: relative;
+    z-index: 2;
     transform: translateY(-35px);
 }
 
@@ -81,6 +84,7 @@ body {
     top: -24px;
     transform: scaleX(1.25);
     transform-origin: center;
+    z-index: 1;
 }
 
 .brand-logo span {
