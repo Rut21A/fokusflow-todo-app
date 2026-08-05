@@ -255,8 +255,11 @@ if (openBtn && largeSidebar) {
     });
 }
 if (todoInput) {
-    todoInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') { checkInput(); }
+    todoInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            checkInput();
+        }
     });
 }
 
@@ -362,6 +365,16 @@ if (todolist) {
         actionButton.click();
     });
 }
+
+// Alle sichtbaren Buttons können auch zuverlässig mit Enter oder Leertaste ausgelöst werden.
+document.addEventListener('keydown', function(event) {
+    if (event.defaultPrevented || (event.key !== 'Enter' && event.key !== ' ')) return;
+    const button = event.target.closest('button');
+    if (!button || button.disabled) return;
+
+    event.preventDefault();
+    button.click();
+});
 
 // Wechselt das aktive optische Design in der Sidebar
 function handleSidebarActive(activeBtn) {
