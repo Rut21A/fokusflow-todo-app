@@ -41,3 +41,10 @@ py -3 -m http.server 5173
 ```text
 http://127.0.0.1:5173/
 ```
+
+## Testing notes
+
+- The empty state is shown when there are no tasks.
+- Empty task text is blocked with a clear message.
+- Clearing task data keeps the app usable.
+- Adding, editing, filtering, and deleting tasks were tested without console errors.
