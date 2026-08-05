@@ -94,7 +94,26 @@ body {
 .brand-logo .letter-t { transform: rotate(-7deg) translateY(-1px); }
 .brand-logo .letter-o-first { transform: rotate(10deg) translateY(3px); }
 .brand-logo .letter-d { transform: rotate(6deg) translateY(1px); }
-.brand-logo .letter-o-last { transform: rotate(-18deg) translateY(3px); }
+.brand-logo .letter-o-last {
+    width: 52px;
+    height: 52px;
+    position: relative;
+    border: 3px solid #333;
+    border-radius: 50%;
+    background: #fffdf7;
+    box-shadow: 3px 3px 0 #f4ce4a, 4px 4px 0 #333;
+    font-size: 0;
+    transform: rotate(-18deg) translateY(3px);
+}
+
+.brand-logo .letter-o-last::after {
+    content: "";
+    position: absolute;
+    inset: 11px;
+    border: 3px solid #333;
+    border-radius: 50%;
+    background: #fffdf7;
+}
 
 .brand-pendulum {
     width: 50px;
