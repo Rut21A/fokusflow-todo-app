@@ -82,10 +82,10 @@ body {
     display: inline-block;
 }
 
-.brand-logo span:nth-child(1) { transform: rotate(-9deg) translateY(-2px); }
-.brand-logo span:nth-child(2) { transform: rotate(7deg) translateY(1px); }
-.brand-logo span:nth-child(3) { transform: rotate(-5deg) translateY(-1px); }
-.brand-logo span:nth-child(4) { transform: rotate(8deg) translateY(1px); }
+.brand-logo span:nth-child(1) { transform: rotate(-10deg) translateY(-3px); }
+.brand-logo span:nth-child(2) { transform: rotate(12deg) translateY(2px); }
+.brand-logo span:nth-child(3) { transform: rotate(-9deg) translateY(-2px); }
+.brand-logo span:nth-child(4) { transform: rotate(14deg) translateY(2px); }
 
 .brand-pendulum {
     width: 50px;
