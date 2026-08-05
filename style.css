@@ -92,9 +92,9 @@ body {
 }
 
 .brand-logo .letter-t { transform: rotate(-7deg) translateY(-1px); }
-.brand-logo .letter-o-first { transform: rotate(8deg) translateY(3px); }
+.brand-logo .letter-o-first { transform: rotate(10deg) translateY(3px); }
 .brand-logo .letter-d { transform: rotate(6deg) translateY(1px); }
-.brand-logo .letter-o-last { transform: rotate(8deg) translateY(3px); }
+.brand-logo .letter-o-last { transform: rotate(-10deg) translateY(3px); }
 
 .brand-pendulum {
     width: 50px;
