@@ -54,10 +54,12 @@ body {
     border: 2px solid #4a4548;
     background: #f9d3e5;
     transform: rotate(45deg);
+    animation: sparkle-turn 30s linear infinite;
 }
 
 .brand-sparkles span:last-child {
     background: #fff;
+    animation-delay: -15s;
 }
 
 .brand-logo {
@@ -123,8 +125,13 @@ body {
 }
 
 @keyframes pendulum-swing {
-    0%, 100% { transform: rotate(-45deg); }
-    50% { transform: rotate(45deg); }
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(52deg); }
+}
+
+@keyframes sparkle-turn {
+    from { transform: rotate(45deg); }
+    to { transform: rotate(405deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
