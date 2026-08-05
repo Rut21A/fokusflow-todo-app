@@ -45,7 +45,7 @@ body {
 .brand-sparkles {
     display: flex;
     gap: 12px;
-    margin-right: 18px;
+    margin-right: 34px;
     position: relative;
     z-index: 2;
     transform: translateY(-35px);
