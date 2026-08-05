@@ -67,8 +67,8 @@ body {
     margin: 0;
     color: #fffdf7;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 52px;
-    font-style: italic;
+    font-size: 61px;
+    font-style: normal;
     font-weight: 700;
     letter-spacing: 0;
     line-height: 1;
@@ -78,8 +78,8 @@ body {
     align-items: center;
     gap: 1px;
     position: relative;
-    top: -29px;
-    transform: scaleX(1.32);
+    top: -24px;
+    transform: scaleX(1.25);
     transform-origin: center;
 }
 
@@ -87,10 +87,10 @@ body {
     display: inline-block;
 }
 
-.brand-logo .letter-t { transform: rotate(7deg) translateY(1px); }
-.brand-logo .letter-o-first { transform: rotate(13deg) translateY(4px); }
-.brand-logo .letter-d { transform: rotate(5deg) translateY(1px); }
-.brand-logo .letter-o-last { transform: rotate(11deg) translateY(4px); }
+.brand-logo .letter-t { transform: rotate(-7deg) translateY(-1px); }
+.brand-logo .letter-o-first { transform: rotate(8deg) translateY(3px); }
+.brand-logo .letter-d { transform: rotate(6deg) translateY(1px); }
+.brand-logo .letter-o-last { transform: rotate(8deg) translateY(3px); }
 
 .brand-pendulum {
     width: 50px;
