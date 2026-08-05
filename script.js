@@ -2,6 +2,7 @@ const addBtn = document.getElementById('add-btn');
 const todoInput = document.getElementById('todo-input');
 const dueDateInput = document.getElementById('due-date-input');
 const errorMsg = document.getElementById('error-msg');
+const statusMsg = document.getElementById('status-msg');
 const usageTips = document.getElementById('usage-tips'); 
 const todolist = document.getElementById('todo-list'); 
 const emptyState = document.getElementById('empty-state');
@@ -33,6 +34,7 @@ if (isQuickMode && openBtn && largeSidebar) {
 
 // Variable, um zu speichern, welche Aktion gerade im Bestätigungsfenster offen ist
 let activeDeleteAction = '';
+let feedbackTimer;
 
 // Das exakte, geschwungene SVG-Kreuz (X)
 const svgCross = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px; height:13px; display:block;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
@@ -40,6 +42,14 @@ const svgCross = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" str
 // Das exakte, freihändig geschwungene SVG-Häkchen
 const svgCheck = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px; display:block;"><path d="M20 6L9 17l-5-5"/></svg>`;
 const svgEdit = `<svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px; display:block;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`;
+
+function showFeedback(message) {
+    if (!statusMsg) return;
+    statusMsg.textContent = message;
+    statusMsg.classList.remove('hidden');
+    clearTimeout(feedbackTimer);
+    feedbackTimer = setTimeout(() => statusMsg.classList.add('hidden'), 4000);
+}
 
 function updateTaskButtonLabels(li) {
     const taskText = li.querySelector('.todo-content')?.innerText.trim() || 'task';
@@ -238,6 +248,7 @@ function checkInput() {
         if (dueDateInput) dueDateInput.value = "";
         saveToLocalStorage();
         switchView(currentView);
+        showFeedback('Task added.');
     }
 }
 
@@ -306,7 +317,10 @@ if (todolist) {
                     cancelButton.remove();
                     if (editButton) editButton.classList.remove('hidden');
                     updateTaskButtonLabels(li);
-                    if (saveChanges && updatedText) saveToLocalStorage();
+                    if (saveChanges && updatedText) {
+                        saveToLocalStorage();
+                        showFeedback('Task updated.');
+                    }
                 };
 
                 editInput.addEventListener('keydown', (event) => {
@@ -335,6 +349,7 @@ if (todolist) {
                 updateTaskButtonLabels(li);
                 saveToLocalStorage();
                 switchView(currentView);
+                showFeedback(li.classList.contains('checked') ? 'Task completed.' : 'Task reopened.');
             }
         }
 
@@ -350,6 +365,7 @@ if (todolist) {
                 }
                 saveToLocalStorage(); 
                 switchView(currentView); 
+                showFeedback(currentView === 'trash' ? 'Task permanently deleted.' : 'Task moved to Trash.');
             }, 200);
         }
     });

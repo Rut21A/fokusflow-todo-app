@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TO-Do List App - Easy Tutorials</title>
-    <link rel="stylesheet" href="style.css?v=53">
+    <link rel="stylesheet" href="style.css?v=54">
     <link href="https://googleapis.com" rel="stylesheet">
 
 </head>
@@ -22,7 +22,8 @@
                 <button id="add-btn">Add</button>
             </div>
             <!-- Die Fehlermeldung klebt unter dem Eingabefeld -->
-            <p id="error-msg" class="error-text hidden">📍 Please enter content!</p>
+            <p id="error-msg" class="error-text hidden">Please enter a task before adding it.</p>
+            <p id="status-msg" class="status-text hidden" role="status" aria-live="polite"></p>
         </div>
 
         <!-- Die Reihe für Box + Buttons startet hier -->
@@ -104,7 +105,7 @@
     </div>
 </div>
 
-    <script src="script.js?v=54"></script>
+    <script src="script.js?v=55"></script>
 </body>
 
 </html>
