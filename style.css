@@ -933,10 +933,9 @@ input:focus-visible,
     }
 
     /* Auf dem Handy bleiben die wichtigsten Schnellaktionen bewusst kompakt. */
-    .todo-sidebar:not(.quick-mode) #in-progress-btn,
-    .todo-sidebar:not(.quick-mode) #trash-btn,
-    .todo-sidebar:not(.quick-mode) #finish-all-btn,
-    .todo-sidebar:not(.quick-mode) #export-btn {
+.todo-sidebar:not(.quick-mode) #in-progress-btn,
+.todo-sidebar:not(.quick-mode) #finish-all-btn,
+.todo-sidebar:not(.quick-mode) #export-btn {
         display: none !important;
     }
 }
