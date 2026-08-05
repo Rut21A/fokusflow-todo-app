@@ -930,6 +930,30 @@ input:focus-visible,
         grid-template-columns: none;
     }
 
+    /* Ohne Aufgaben bleibt die geöffnete Leiste genauso kompakt wie mit Aufgaben. */
+    .todo-sidebar:not(.quick-mode):not(.has-tasks) {
+        width: 170px;
+        padding: 0;
+        gap: 0;
+        overflow: hidden;
+    }
+
+    .todo-sidebar:not(.quick-mode):not(.has-tasks) .side-btn {
+        border: 0 !important;
+        border-bottom: 1px solid #333 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 10px !important;
+    }
+
+    .todo-sidebar:not(.quick-mode):not(.has-tasks) #open-btn {
+        border-bottom: 2px solid #333 !important;
+    }
+
+    .todo-sidebar:not(.quick-mode):not(.has-tasks) #all-btn {
+        background: #ffc8d0 !important;
+    }
+
     .todo-sidebar.quick-mode {
         right: -4px;
         bottom: 150px;
