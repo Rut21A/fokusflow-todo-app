@@ -57,7 +57,7 @@ const translations = {
         inputPlaceholder: 'Neue Aufgabe hinzufügen...', newTaskLabel: 'Neue Aufgabe', dueDateLabel: 'Optionales Datum', add: 'Hinzufügen', markAll: 'Alle erledigen',
         title: 'Jetzt handeln, Leben vereinfachen. ☕', tipTitle: 'Füge deine erste Aufgabe hinzu! 📝', tips: 'Tipps 💡 :',
         tipLines: ['Drücke Enter, um eine Aufgabe hinzuzufügen.', 'Ziehe Aufgaben zum Sortieren (nur PC).', 'Doppelklicke zum Bearbeiten von Titel und Aufgaben.', 'Nutze die Schnellaktionen rechts.', 'Deine Daten werden lokal im Browser gespeichert.', 'Du kannst Daten herunterladen und importieren.'],
-        tasks: 'Aufgaben', all: 'Alle', inProgress: 'Offen', completed: 'Erledigt', trash: 'Papierkorb', finishAll: 'Alle erledigen', clearCompleted: 'Erledigte löschen', clearAll: 'Alles löschen', export: 'Daten exportieren', import: 'Importieren (txt/json)', chooseFile: 'Datei zum Importieren auswählen', quicks: 'Schnell', open: 'OPEN ✨',
+        tasks: 'Aufgaben', all: 'Alle', inProgress: 'Offen', completed: 'Erledigt', trash: 'Papierkorb', finishAll: 'Alle erledigen', clearCompleted: 'Erledigte löschen', clearAll: 'Alles löschen', export: 'Daten exportieren', import: 'Importieren (txt/json)', chooseFile: 'Datei zum Importieren auswählen', quicks: 'Menü', open: 'OPEN ✨',
         taskOne: 'Aufgabe', taskMany: 'Aufgaben', shown: 'sichtbar', open: 'offen', completedCount: 'erledigt', trashed: 'im Papierkorb', allCompleted: 'Alles erledigt, gut gemacht!'
     }
 };
