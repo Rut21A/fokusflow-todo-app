@@ -210,6 +210,10 @@ function updateMarkAllDoneVisibility() {
     const allTodos = document.querySelectorAll('.todo-list li');
     const visibleTodos = document.querySelectorAll('.todo-list li:not(.hidden)');
     const remainingTodos = document.querySelectorAll('.todo-list li:not(.checked):not(.in-trash)');
+    const activeTodos = document.querySelectorAll('.todo-list li:not(.in-trash)');
+    const showWelcomeTips = currentView === 'all' && activeTodos.length === 0;
+
+    if (usageTips) usageTips.classList.toggle('hidden', !showWelcomeTips);
 
     // 1. "Mark All Done" oben links im Kasten steuern
     if (markAllDoneBtn) {
@@ -222,7 +226,7 @@ function updateMarkAllDoneVisibility() {
 
     // 2. Footer-Text mit verbleibenden Elementen berechnen
     if (todoFooter) {
-        if (allTodos.length > 0) {
+        if (allTodos.length > 0 && !showWelcomeTips) {
             const visibleCount = visibleTodos.length;
             const unit = visibleCount === 1 ? t('taskOne') : t('taskMany');
             const filterSummary = {
@@ -249,13 +253,13 @@ function updateMarkAllDoneVisibility() {
             completed: 'No completed tasks yet.',
             trash: 'Your trash is empty.'
         };
-        const showEmptyState = allTodos.length > 0 && visibleTodos.length === 0;
+        const showEmptyState = !showWelcomeTips && allTodos.length > 0 && visibleTodos.length === 0;
         emptyState.textContent = showEmptyState ? emptyMessages[currentView] : '';
         emptyState.classList.toggle('hidden', !showEmptyState);
     }
 
     // 3. In der leeren Ansicht bleiben nur die drei sinnvollen Schnellaktionen sichtbar.
-    const hasItems = allTodos.length > 0;
+    const hasItems = allTodos.length > 0 && !showWelcomeTips;
     const emptyStateButtons = ['all-btn', 'trash-btn', 'open-btn', 'import-btn'];
     const mainFilterButtons = ['all-btn', 'in-progress-btn', 'completed-btn', 'trash-btn', 'export-btn', 'open-btn', 'import-btn'];
     mainFilterButtons.forEach(id => {
