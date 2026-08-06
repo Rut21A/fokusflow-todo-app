@@ -876,7 +876,7 @@ input:focus-visible,
         position: fixed;
         left: 10px;
         bottom: 18px;
-        width: calc(100% - 20px);
+        width: calc(100% - 24px);
         padding-top: 0;
     }
 
@@ -944,6 +944,7 @@ input:focus-visible,
     }
 
     .todo-app {
+        width: calc(100% - 4px);
         height: clamp(360px, calc(100vh - 365px), 590px);
         min-height: 0;
     }
