@@ -10,15 +10,15 @@ Eine einfache und übersichtliche To-do-App für den Browser. Sie hilft dir, Auf
 
 ### Empty state
 
-![FocusFlow empty state](screenshots/empty-state.png)
+![FocusFlow empty state](assets/portfolio/screenshots/01-empty-state.png)
 
 ### Task list
 
-![FocusFlow task list](screenshots/task-list.png)
+![FocusFlow task list](assets/portfolio/screenshots/02-task-list.png)
 
 ### Completed tasks
 
-![FocusFlow completed tasks](screenshots/completed-filter.png)
+![FocusFlow completed tasks](assets/portfolio/screenshots/03-completed-filter.png)
 
 ## Funktionen
 
