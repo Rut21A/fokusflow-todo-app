@@ -858,7 +858,13 @@ input:focus-visible,
 
 @media (max-width: 620px) {
     body {
-        padding: 10px;
+        padding: 62px 10px 10px;
+    }
+
+    .top-nav {
+        top: -48px;
+        gap: 8px;
+        font-size: 14px;
     }
 
     .container {
