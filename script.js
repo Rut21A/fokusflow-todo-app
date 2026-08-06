@@ -48,7 +48,7 @@ const translations = {
         inputPlaceholder: 'Add a to-do item...', newTaskLabel: 'New task', dueDateLabel: 'Optional due date', add: 'Add', markAll: 'Mark All Done',
         title: 'Act Now, Simplify Life. ☕', tipTitle: 'Add Your First To-Do Item! 📝', tips: 'Usage Tips 💡 :',
         tipLines: ['Press Enter to submit actions.', 'Drag to reorder your to-dos (PC only)', 'Double-click to edit slogan and tasks.', 'Access quick actions in the right sidebar.', 'Your data is stored locally in your browser.', 'Supports data download and import.'],
-        tasks: 'Tasks', all: 'All', inProgress: 'In Progress', completed: 'Completed', trash: 'Trash', finishAll: 'Finish all', clearCompleted: 'Clear Completed', clearAll: 'Clear All', export: 'Export data', import: 'Import(txt/json)', chooseFile: 'Choose a task file to import',
+        tasks: 'Tasks', all: 'All', inProgress: 'In Progress', completed: 'Completed', trash: 'Trash', finishAll: 'Finish all', clearCompleted: 'Clear Completed', clearAll: 'Clear All', export: 'Export data', import: 'Import(txt/json)', chooseFile: 'Choose a task file to import', quicks: 'Quicks', open: 'OPEN ✨',
         taskOne: 'task', taskMany: 'tasks', shown: 'shown', open: 'open', completedCount: 'completed', trashed: 'trashed', allCompleted: 'All completed, good job!'
     },
     de: {
@@ -57,7 +57,7 @@ const translations = {
         inputPlaceholder: 'Neue Aufgabe hinzufügen...', newTaskLabel: 'Neue Aufgabe', dueDateLabel: 'Optionales Datum', add: 'Hinzufügen', markAll: 'Alle erledigen',
         title: 'Jetzt handeln, Leben vereinfachen. ☕', tipTitle: 'Füge deine erste Aufgabe hinzu! 📝', tips: 'Tipps 💡 :',
         tipLines: ['Drücke Enter, um eine Aufgabe hinzuzufügen.', 'Ziehe Aufgaben zum Sortieren (nur PC).', 'Doppelklicke zum Bearbeiten von Titel und Aufgaben.', 'Nutze die Schnellaktionen rechts.', 'Deine Daten werden lokal im Browser gespeichert.', 'Du kannst Daten herunterladen und importieren.'],
-        tasks: 'Aufgaben', all: 'Alle', inProgress: 'Offen', completed: 'Erledigt', trash: 'Papierkorb', finishAll: 'Alle erledigen', clearCompleted: 'Erledigte löschen', clearAll: 'Alles löschen', export: 'Daten exportieren', import: 'Importieren (txt/json)', chooseFile: 'Datei zum Importieren auswählen',
+        tasks: 'Aufgaben', all: 'Alle', inProgress: 'Offen', completed: 'Erledigt', trash: 'Papierkorb', finishAll: 'Alle erledigen', clearCompleted: 'Erledigte löschen', clearAll: 'Alles löschen', export: 'Daten exportieren', import: 'Importieren (txt/json)', chooseFile: 'Datei zum Importieren auswählen', quicks: 'Schnell', open: 'OPEN ✨',
         taskOne: 'Aufgabe', taskMany: 'Aufgaben', shown: 'sichtbar', open: 'offen', completedCount: 'erledigt', trashed: 'im Papierkorb', allCompleted: 'Alles erledigt, gut gemacht!'
     }
 };
@@ -109,6 +109,10 @@ function applyLanguage(language) {
     setText('import-btn', copy.import);
     const fileInput = document.getElementById('file-input');
     if (fileInput) fileInput.setAttribute('aria-label', copy.chooseFile);
+    if (openBtn) {
+        openBtn.dataset.quickLabel = copy.quicks;
+        openBtn.textContent = isQuickMode ? copy.quicks : copy.open;
+    }
 
     if (langEnBtn) langEnBtn.setAttribute('aria-pressed', String(language === 'en'));
     if (langDeBtn) langDeBtn.setAttribute('aria-pressed', String(language === 'de'));
@@ -337,7 +341,7 @@ function checkInput() {
         if (window.matchMedia('(max-width: 620px)').matches && isQuickMode && largeSidebar && openBtn) {
             isQuickMode = false;
             largeSidebar.classList.remove('quick-mode');
-            openBtn.textContent = 'OPEN ✨';
+            openBtn.textContent = t('open');
         }
         switchView(currentView);
         showFeedback('Task added.');
@@ -349,7 +353,7 @@ if (openBtn && largeSidebar) {
     openBtn.addEventListener('click', function() {
         isQuickMode = !isQuickMode;
         largeSidebar.classList.toggle('quick-mode', isQuickMode);
-        openBtn.textContent = isQuickMode ? 'QUICKS' : 'OPEN ✨';
+        openBtn.textContent = isQuickMode ? t('quicks') : t('open');
 
         // Beim Öffnen die zu den vorhandenen Aufgaben passenden Aktionen zeigen.
         if (!isQuickMode) {

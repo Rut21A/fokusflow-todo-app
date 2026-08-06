@@ -537,7 +537,7 @@ input:focus-visible,
 }
 
 .todo-sidebar.quick-mode #open-btn::after {
-    content: "Quicks";
+    content: attr(data-quick-label);
     display: flex;
     align-items: center;
     justify-content: center;
