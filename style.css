@@ -482,6 +482,10 @@ input:focus-visible,
 }
 
 .todo-sidebar.has-tasks #all-btn {
+    background: #fff !important;
+}
+
+.todo-sidebar.has-tasks .side-btn.active {
     background: #ffc8d0 !important;
 }
 

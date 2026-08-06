@@ -283,6 +283,20 @@ function updateMarkAllDoneVisibility() {
 function switchView(view) {
     currentView = view;
     localStorage.setItem('todoView', currentView);
+    const filterButtonByView = {
+        all: 'all-btn',
+        'in-progress': 'in-progress-btn',
+        completed: 'completed-btn',
+        trash: 'trash-btn'
+    };
+    Object.entries(filterButtonByView).forEach(([filter, id]) => {
+        const button = document.getElementById(id);
+        if (button) {
+            const isActive = filter === currentView;
+            button.classList.toggle('active', isActive);
+            button.setAttribute('aria-pressed', String(isActive));
+        }
+    });
     const allTodos = document.querySelectorAll('.todo-list li');
     
     allTodos.forEach(li => {
