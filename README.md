@@ -4,7 +4,7 @@ Eine einfache und übersichtliche To-do-App für den Browser. Sie hilft dir, Auf
 
 ## Live Demo
 
-[Try FocusFlow live](https://rut21a.github.io/fokusflow-todo-app/)
+[rut21a.github.io/fokusflow-todo-app](https://rut21a.github.io/fokusflow-todo-app/)
 
 ## Screenshots
 
