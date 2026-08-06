@@ -6,6 +6,20 @@ Eine einfache und übersichtliche To-do-App für den Browser. Sie hilft dir, Auf
 
 [Try FocusFlow live](https://rut21a.github.io/fokusflow-todo-app/)
 
+## Screenshots
+
+### Empty state
+
+![FocusFlow empty state](screenshots/empty-state.png)
+
+### Task list
+
+![FocusFlow task list](screenshots/task-list.png)
+
+### Completed tasks
+
+![FocusFlow completed tasks](screenshots/completed-filter.png)
+
 ## Funktionen
 
 - Aufgaben hinzufügen und erledigen
