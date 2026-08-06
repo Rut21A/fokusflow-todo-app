@@ -44,19 +44,21 @@ let feedbackTimer;
 const translations = {
     en: {
         about: 'About', aboutTitle: 'About Ruta',
-        aboutText: 'Hi, I’m Ruta — a junior developer who turns small ideas into clear, friendly web experiences. FokusFlow is my playful space for better focus, one task at a time.',
+        aboutText: 'Hi, I’m Ruta — a junior developer creating friendly web experiences.',
         inputPlaceholder: 'Add a to-do item...', newTaskLabel: 'New task', dueDateLabel: 'Optional due date', add: 'Add', markAll: 'Mark All Done',
         title: 'Act Now, Simplify Life. ☕', tipTitle: 'Add Your First To-Do Item! 📝', tips: 'Usage Tips 💡 :',
         tipLines: ['Press Enter to submit actions.', 'Drag to reorder your to-dos (PC only)', 'Double-click to edit slogan and tasks.', 'Access quick actions in the right sidebar.', 'Your data is stored locally in your browser.', 'Supports data download and import.'],
-        tasks: 'Tasks', all: 'All', inProgress: 'In Progress', completed: 'Completed', trash: 'Trash', finishAll: 'Finish all', clearCompleted: 'Clear Completed', clearAll: 'Clear All', export: 'Export data', import: 'Import(txt/json)', chooseFile: 'Choose a task file to import'
+        tasks: 'Tasks', all: 'All', inProgress: 'In Progress', completed: 'Completed', trash: 'Trash', finishAll: 'Finish all', clearCompleted: 'Clear Completed', clearAll: 'Clear All', export: 'Export data', import: 'Import(txt/json)', chooseFile: 'Choose a task file to import',
+        taskOne: 'task', taskMany: 'tasks', shown: 'shown', open: 'open', completedCount: 'completed', trashed: 'trashed', allCompleted: 'All completed, good job!'
     },
     de: {
         about: 'Über mich', aboutTitle: 'Über Ruta',
-        aboutText: 'Hi, ich bin Ruta — Junior Entwicklerin mit Freude an klaren, freundlichen Web-Erlebnissen. FokusFlow ist mein spielerischer Ort für mehr Fokus, eine Aufgabe nach der anderen.',
+        aboutText: 'Hi, ich bin Ruta — Junior Entwicklerin für freundliche Web-Erlebnisse.',
         inputPlaceholder: 'Neue Aufgabe hinzufügen...', newTaskLabel: 'Neue Aufgabe', dueDateLabel: 'Optionales Datum', add: 'Hinzufügen', markAll: 'Alle erledigen',
         title: 'Jetzt handeln, Leben vereinfachen. ☕', tipTitle: 'Füge deine erste Aufgabe hinzu! 📝', tips: 'Tipps 💡 :',
         tipLines: ['Drücke Enter, um eine Aufgabe hinzuzufügen.', 'Ziehe Aufgaben zum Sortieren (nur PC).', 'Doppelklicke zum Bearbeiten von Titel und Aufgaben.', 'Nutze die Schnellaktionen rechts.', 'Deine Daten werden lokal im Browser gespeichert.', 'Du kannst Daten herunterladen und importieren.'],
-        tasks: 'Aufgaben', all: 'Alle', inProgress: 'Offen', completed: 'Erledigt', trash: 'Papierkorb', finishAll: 'Alle erledigen', clearCompleted: 'Erledigte löschen', clearAll: 'Alles löschen', export: 'Daten exportieren', import: 'Importieren (txt/json)', chooseFile: 'Datei zum Importieren auswählen'
+        tasks: 'Aufgaben', all: 'Alle', inProgress: 'Offen', completed: 'Erledigt', trash: 'Papierkorb', finishAll: 'Alle erledigen', clearCompleted: 'Erledigte löschen', clearAll: 'Alles löschen', export: 'Daten exportieren', import: 'Importieren (txt/json)', chooseFile: 'Datei zum Importieren auswählen',
+        taskOne: 'Aufgabe', taskMany: 'Aufgaben', shown: 'sichtbar', open: 'offen', completedCount: 'erledigt', trashed: 'im Papierkorb', allCompleted: 'Alles erledigt, gut gemacht!'
     }
 };
 
@@ -110,6 +112,11 @@ function applyLanguage(language) {
 
     if (langEnBtn) langEnBtn.setAttribute('aria-pressed', String(language === 'en'));
     if (langDeBtn) langDeBtn.setAttribute('aria-pressed', String(language === 'de'));
+    updateMarkAllDoneVisibility();
+}
+
+function t(key) {
+    return translations[currentLanguage][key] || key;
 }
 
 // Das exakte, geschwungene SVG-Kreuz (X)
@@ -213,19 +220,19 @@ function updateMarkAllDoneVisibility() {
     if (todoFooter) {
         if (allTodos.length > 0) {
             const visibleCount = visibleTodos.length;
-            const unit = visibleCount === 1 ? 'task' : 'tasks';
+            const unit = visibleCount === 1 ? t('taskOne') : t('taskMany');
             const filterSummary = {
-                all: `${visibleCount} ${unit} shown`,
-                'in-progress': `${visibleCount} open ${unit} shown`,
-                completed: `${visibleCount} completed ${unit} shown`,
-                trash: `${visibleCount} trashed ${unit} shown`
+                all: `${visibleCount} ${unit} ${t('shown')}`,
+                'in-progress': `${visibleCount} ${t('open')} ${unit} ${t('shown')}`,
+                completed: `${visibleCount} ${t('completedCount')} ${unit} ${t('shown')}`,
+                trash: `${visibleCount} ${t('trashed')} ${unit} ${t('shown')}`
             };
-            const openUnit = remainingTodos.length === 1 ? 'task' : 'tasks';
-            todoFooter.textContent = `${filterSummary[currentView] || `${visibleCount} ${unit} shown`} (${remainingTodos.length} ${openUnit} open)`;
+            const openUnit = remainingTodos.length === 1 ? t('taskOne') : t('taskMany');
+            todoFooter.textContent = `${filterSummary[currentView] || `${visibleCount} ${unit} ${t('shown')}`} (${remainingTodos.length} ${openUnit} ${t('open')})`;
             todoFooter.classList.remove('hidden');
             todoFooter.style.setProperty('display', 'flex', 'important'); 
         } else {
-            todoFooter.textContent = 'All completed, good job!';
+            todoFooter.textContent = t('allCompleted');
             todoFooter.classList.remove('hidden');
             todoFooter.style.setProperty('display', 'flex', 'important');
         }
