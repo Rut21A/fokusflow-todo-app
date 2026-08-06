@@ -954,6 +954,25 @@ input:focus-visible,
         overflow-y: auto;
     }
 
+    .tips-container h3,
+    .tips-container .tips-sub {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .tips-container li {
+        font-size: 15px;
+        line-height: 1.4;
+        margin-bottom: 7px;
+    }
+
+    .tips-container .purple-check,
+    .tips-container .emoji-icon {
+        width: 26px;
+        flex-basis: 26px;
+        margin-right: 4px;
+    }
+
     .todo-list li {
         padding: 10px 12px;
     }
