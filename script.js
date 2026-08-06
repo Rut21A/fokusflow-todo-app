@@ -44,7 +44,7 @@ let feedbackTimer;
 const translations = {
     en: {
         about: 'About', aboutTitle: 'About Ruta',
-        aboutText: 'Hi, I’m Ruta — a junior developer creating friendly web experiences.',
+        aboutText: 'Hi, I’m Ruta — a junior developer creating friendly web experiences. Little Wins is one of them.',
         inputPlaceholder: 'Add a to-do item...', newTaskLabel: 'New task', dueDateLabel: 'Optional due date', add: 'Add', markAll: 'Mark All Done',
         title: 'Act Now, Simplify Life. ☕', tipTitle: 'Add Your First To-Do Item! 📝', tips: 'Usage Tips 💡 :',
         tipLines: ['Press Enter to submit actions.', 'Drag to reorder your to-dos (PC only)', 'Double-click to edit slogan and tasks.', 'Access quick actions in the right sidebar.', 'Your data is stored locally in your browser.', 'Supports data download and import.'],
@@ -53,7 +53,7 @@ const translations = {
     },
     de: {
         about: 'Über mich', aboutTitle: 'Über Ruta',
-        aboutText: 'Hi, ich bin Ruta — Junior Entwicklerin für freundliche Web-Erlebnisse.',
+        aboutText: 'Hi, ich bin Ruta — Junior Entwicklerin für freundliche Web-Erlebnisse. Little Wins ist eines davon.',
         inputPlaceholder: 'Neue Aufgabe hinzufügen...', newTaskLabel: 'Neue Aufgabe', dueDateLabel: 'Optionales Datum', add: 'Hinzufügen', markAll: 'Alle erledigen',
         title: 'Jetzt handeln, Leben vereinfachen. ☕', tipTitle: 'Füge deine erste Aufgabe hinzu! 📝', tips: 'Tipps 💡 :',
         tipLines: ['Drücke Enter, um eine Aufgabe hinzuzufügen.', 'Ziehe Aufgaben zum Sortieren (nur PC).', 'Doppelklicke zum Bearbeiten von Titel und Aufgaben.', 'Nutze die Schnellaktionen rechts.', 'Deine Daten werden lokal im Browser gespeichert.', 'Du kannst Daten herunterladen und importieren.'],

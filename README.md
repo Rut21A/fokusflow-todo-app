@@ -1,24 +1,24 @@
-# FocusFlow – Deine einfache To-do-App
+# Little Wins – Deine einfache To-do-App
 
 Eine einfache und übersichtliche To-do-App für den Browser. Sie hilft dir, Aufgaben festzuhalten, den Überblick zu behalten und Erledigtes abzuhaken.
 
 ## Live Demo
 
-[rut21a.github.io/fokusflow-todo-app](https://rut21a.github.io/fokusflow-todo-app/)
+[Little Wins – Live Demo](https://rut21a.github.io/fokusflow-todo-app/)
 
 ## Screenshots
 
 ### Empty state
 
-![FocusFlow empty state](assets/portfolio/screenshots/01-empty-state.png)
+![Little Wins empty state](assets/portfolio/screenshots/01-empty-state.png)
 
 ### Task list
 
-![FocusFlow task list](assets/portfolio/screenshots/02-task-list.png)
+![Little Wins task list](assets/portfolio/screenshots/02-task-list.png)
 
 ### Completed tasks
 
-![FocusFlow completed tasks](assets/portfolio/screenshots/03-completed-filter.png)
+![Little Wins completed tasks](assets/portfolio/screenshots/03-completed-filter.png)
 
 ## Funktionen
 
